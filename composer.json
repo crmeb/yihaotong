@@ -2,7 +2,7 @@
     "name": "crmeb/yihaotong",
     "description": "CRMEB一号通",
     "type": "library",
-    "license": "LIM",
+    "license": "Apache-2.0",
     "autoload": {
         "psr-4": {
             "Crmeb\\Yihaotong\\": "src/"
