@@ -29,6 +29,22 @@ class Factory
     protected static $drivers = [];
 
     /**
+     * @var AccessToken
+     */
+    protected static $accessToken;
+
+    /**
+     * @param AccessToken $accessToken
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/7/25
+     */
+    public static function setAccessToken(AccessToken $accessToken)
+    {
+        self::$accessToken = $accessToken;
+    }
+
+    /**
      * @param string $name
      * @param array $config
      * @return mixed
@@ -60,6 +76,6 @@ class Factory
      */
     public static function __callStatic($name, $arguments)
     {
-        return self::make($name, $arguments);
+        return self::make($name, self::$accessToken ? [self::$accessToken] : $arguments);
     }
 }
