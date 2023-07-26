@@ -3,16 +3,16 @@ module.exports = {
     base: '/docs/',
     description: '使用接口文档',
     head: [
-        ['meta', { name: 'keywords', content: '一号通'}]
+        ['meta', {name: 'keywords', content: '一号通'}]
     ],
     themeConfig: {
-        smoothScroll:true,
-        lastUpdated:'更新时间',
+        smoothScroll: true,
+        lastUpdated: '更新时间',
         repo: 'https://gitee.com/ZhongBangKeJi/yihaotong.git',
         editLinkText: '帮助我们改善此页面！',
         docsBranch: 'master',
         editLinks: true,
-        docsDir:'docs',
+        docsDir: 'docs',
         sidebar: [
             {
                 title: '快速入门',
@@ -101,6 +101,26 @@ module.exports = {
                         children: [
                             '/商品采集/API/商品采集',
                             '/商品采集/API/采集记录'
+                        ],
+                    }
+                ],
+            },
+            {
+                title: '发票开具',
+                collapsable: false,
+                children: [
+                    '/发票开具/使用说明',
+                    {
+                        title: 'API',
+                        collapsable: false,
+                        children: [
+                            '/发票开具/API/获取商品类目',
+                            '/发票开具/API/发票开具',
+                            '/发票开具/API/查看发票详情',
+                            '/发票开具/API/下载发票',
+                            '/发票开具/API/PDF邮箱推送',
+                            '/发票开具/API/申请红字发票',
+                            '/发票开具/API/开具负数发票',
                         ],
                     }
                 ],
