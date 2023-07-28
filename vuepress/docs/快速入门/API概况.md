@@ -48,3 +48,16 @@
 |---|---|
 | v2/copy/goods | 采集商品接口 |
 | v2/copy/record | 采集商品记录接口 |
+
+
+### 关于发票开具API
+
+| API | 描述 |
+|---|---|
+| v2/invoice/invoice_issuance | 发票开具接口 |
+| v2/invoice/category | 获取商品类目接口 |
+| v2/invoice/invoice_info/:invoiceNum | 查看发票详情接口 |
+| v2/invoice/apply_red_invoice | 申请红字发票接口 |
+| v2/invoice/red_invoice_issuance | 开具负数发票接口 |
+| v2/invoice/send_pdf_email | PDF邮箱推送接口 |
+| v2/invoice/download_invoice/:invoiceNum | 下载发票接口 |
