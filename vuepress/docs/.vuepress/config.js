@@ -8,11 +8,11 @@ module.exports = {
     themeConfig: {
         smoothScroll: true,
         lastUpdated: '更新时间',
-        repo: 'https://gitee.com/ZhongBangKeJi/yihaotong.git',
+        repo: 'https://github.com/crmeb/yihaotong',
         editLinkText: '帮助我们改善此页面！',
-        docsBranch: 'master',
+        docsBranch: 'docs',
         editLinks: true,
-        docsDir: 'docs',
+        docsDir: 'vuepress/docs',
         sidebar: [
             {
                 title: '快速入门',
