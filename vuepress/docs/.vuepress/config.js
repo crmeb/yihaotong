@@ -25,6 +25,10 @@ module.exports = {
                 ],
             },
             {
+                title: '开放接口',
+                path: '开放接口',
+            },
+            {
                 title: '短信服务',
                 collapsable: false,
                 children: [
