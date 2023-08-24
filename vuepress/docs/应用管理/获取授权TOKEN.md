@@ -19,8 +19,8 @@ Content-Type: application/json;charset=UTF-8
 
 | 名称 | 类型|是否必填 |示例值| 描述|
 |---|---|---|---|---|
-| access_key | 字符串|是|BZKoP4UxZW55FkhXwvQp| access_key一号通后台AccessKey管理获得 |
-| secret_key | 字符串|是|oJX0a0ZquyohszxGeaUqwqQX16a4vRz3AonA| secret_key一号通后台AccessKey管理获得 |
+| access_key | 字符串|是|BZKoP4UxZW55FkhXwvQp| access_key一号通后台应用管理获得APPID |
+| secret_key | 字符串|是|oJX0a0ZquyohszxGeaUqwqQX16a4vRz3AonA| secret_key一号通后台应用管理获得AppSecret |
 
 ### 响应元素
 
