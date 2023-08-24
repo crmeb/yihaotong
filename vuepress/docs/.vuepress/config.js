@@ -3,7 +3,7 @@ module.exports = {
     base: '/docs/',
     description: '使用接口文档',
     head: [
-        ['meta', {name: 'keywords', content: '一号通'}]
+        ['meta', {name: 'keywords', content: '一号通'}],
     ],
     themeConfig: {
         smoothScroll: true,
@@ -114,6 +114,7 @@ module.exports = {
                         title: 'API',
                         collapsable: false,
                         children: [
+                            '/发票开具/API/获取发票开具iframe地址',
                             '/发票开具/API/获取商品类目',
                             '/发票开具/API/发票开具',
                             '/发票开具/API/查看发票详情',
@@ -121,6 +122,7 @@ module.exports = {
                             '/发票开具/API/PDF邮箱推送',
                             '/发票开具/API/申请红字发票',
                             '/发票开具/API/开具负数发票',
+                            '/发票开具/API/开票成功回调',
                         ],
                     }
                 ],
@@ -131,6 +133,7 @@ module.exports = {
                 children: [
                     '/常见问题/返回说明',
                     '/常见问题/常见错误',
+                    '/常见问题/回调数据解密',
                 ],
             },
         ],

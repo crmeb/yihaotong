@@ -54,6 +54,7 @@
 
 | API | 描述 |
 |---|---|
+| v2/invoice/invoice_issuance_url | 获取发票开具页面iframe地址 |
 | v2/invoice/invoice_issuance | 发票开具接口 |
 | v2/invoice/category | 获取商品类目接口 |
 | v2/invoice/invoice_info/:invoiceNum | 查看发票详情接口 |
