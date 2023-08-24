@@ -114,6 +114,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/发票开具/使用说明',
+                    '/发票开具/开票操作说明',
                     {
                         title: 'API',
                         collapsable: false,
