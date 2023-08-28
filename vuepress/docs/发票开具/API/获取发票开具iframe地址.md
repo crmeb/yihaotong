@@ -22,8 +22,8 @@ POST v2/invoice/invoice_issuance_url
 | unique | 字符串|是|--| 唯一值 |
 | goods | 数组|是|--| 商品信息，详情[查看goods请求参数](#goods) |
 | tax_id | 字符串|否|--| 购方纳税人号码 |
-| invoice_type | 字符串|否|--| 发票类型 |
-| invoice_tspz_type | 字符串|否|--| 特定要素类型代码 |
+| invoice_type | 字符串|否|--| 发票类型，详细类型请查看<a href='/docs/发票开具/附件-参数说明.html#特殊票种类说明'>[附件-参数说明]</a>特殊票种类说明 |
+| invoice_tspz_type | 字符串|否|--| 特定要素类型代码，详细类型请查看<a href='/docs/发票开具/附件-参数说明.html#发票类型说明'>[附件-参数说明]</a>发票类型说明 |
 | account_name | 字符串|否|--| 购方企业名称 |
 | bank_name | 字符串|否|--| 购方开户银行名称 |
 | bank_account | 字符串|否|--| 购方银行账户 |
