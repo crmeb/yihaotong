@@ -12,6 +12,8 @@ namespace Crmeb\Yihaotong\Util;
 class Str
 {
 
+    protected static $snakeCache = [];
+
     /**
      * @var array
      */
@@ -19,6 +21,7 @@ class Str
 
 
     /**
+     * 下划线转驼峰(首字母大写)
      * @param $value
      * @return array|mixed|string|string[]
      * @author 等风来
@@ -36,6 +39,32 @@ class Str
         $value = ucwords(str_replace(['-', '_'], ' ', $value));
 
         return static::$studlyCache[$key] = str_replace(' ', '', $value);
+    }
+
+    /**
+     * 驼峰转下划线
+     * @param string $value
+     * @param string $delimiter
+     * @return string
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/8/29
+     */
+    public static function snake(string $value, string $delimiter = '_'): string
+    {
+        $key = $value;
+
+        if (isset(static::$snakeCache[$key][$delimiter])) {
+            return static::$snakeCache[$key][$delimiter];
+        }
+
+        if (!ctype_lower($value)) {
+            $value = preg_replace('/\s+/u', '', $value);
+
+            $value = static::lower(preg_replace('/(.)(?=[A-Z])/u', '$1' . $delimiter, $value));
+        }
+
+        return static::$snakeCache[$key][$delimiter] = $value;
     }
 
     /**

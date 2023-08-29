@@ -18,7 +18,7 @@ use Crmeb\Yihaotong\Exception\YiHaoTongException;
 class AccessToken extends BaseClient
 {
 
-    const USER_LOGIN = "v2/user/login";
+    const USER_LOGIN = "/user/login";
 
     /**
      * @var string
@@ -214,7 +214,7 @@ class AccessToken extends BaseClient
             throw new YiHaoTongException('手机号格式错误');
         }
 
-        $response = $this->client->request($method, $this->baseUrl($uri), [
+        $response = $this->client->request($method, $this->replaceUrl($this->baseUrl($uri)), [
             'headers' => $header,
             'json' => $options,
         ]);

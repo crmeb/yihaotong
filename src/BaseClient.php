@@ -27,6 +27,12 @@ class BaseClient
     protected $config = [];
 
     /**
+     * uri参数
+     * @var array
+     */
+    protected $path = [];
+
+    /**
      * @var bool
      */
     protected $verify = false;
@@ -62,6 +68,46 @@ class BaseClient
     public function baseUrl(string $uri = null)
     {
         return $this->config['base_url'] . ($uri ? '/' . $uri : '');
+    }
+
+    /**
+     * 设置path路径参数
+     * @param string $key
+     * @param $value
+     * @return $this
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/8/29
+     */
+    public function setPath(string $key, $value)
+    {
+        $this->path[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * 替换url
+     * @param string $uri
+     * @return array|string|string[]
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/8/29
+     */
+    public function replaceUrl(string $uri)
+    {
+        if (!$this->path) {
+            return $uri;
+        }
+
+        $var = [];
+        $replace = [];
+
+        foreach ($this->path as $key => $item) {
+            $var[] = '{' . $key . '}';
+            $replace[] = $item;
+        }
+
+        return str_replace($var, $replace, $uri);
     }
 
 

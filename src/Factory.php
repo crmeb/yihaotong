@@ -5,6 +5,7 @@ namespace Crmeb\Yihaotong;
 use Crmeb\Yihaotong\Application\AuthClient;
 use Crmeb\Yihaotong\Application\CollectClient;
 use Crmeb\Yihaotong\Application\ExpressClient;
+use Crmeb\Yihaotong\Application\InvoiceClient;
 use Crmeb\Yihaotong\Application\SmsClient;
 use Crmeb\Yihaotong\Util\Str;
 
@@ -19,6 +20,7 @@ use Crmeb\Yihaotong\Util\Str;
  * @method static CollectClient collet($accessToken)
  * @method static ExpressClient express($accessToken)
  * @method static SmsClient sms($accessToken)
+ * @method static InvoiceClient invoice($accessToken)
  */
 class Factory
 {
@@ -42,6 +44,7 @@ class Factory
     public static function setAccessToken(AccessToken $accessToken)
     {
         self::$accessToken = $accessToken;
+        return new static();
     }
 
     /**

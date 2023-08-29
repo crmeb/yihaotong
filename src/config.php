@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'base_url' => 'https://sms.crmeb.net/api',
+    'base_url' => 'https://sms.crmeb.net/api/v2',
 
     'base_cache_prefix' => 'sms-crmeb-yihaotong-',
 
