@@ -54,6 +54,7 @@ module.exports = {
                         collapsable: false,
                         children: [
                             '/商家寄件/API/创建商家寄件订单',
+                            '/商家寄件/API/查询价格',
                             '/商家寄件/API/取消寄件',
                             '/商家寄件/API/寄件订单列表',
                             '/商家寄件/API/获取商家寄件快递公司',

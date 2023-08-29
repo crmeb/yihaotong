@@ -2,3 +2,4 @@
 vuepress/.temp/
 vuepress/node_modules/
 vuepress/docs/.vuepress/dist/
+vendor/
