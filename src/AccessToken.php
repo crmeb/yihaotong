@@ -127,7 +127,7 @@ class AccessToken extends BaseClient
             $this->cache->set($key, $token['access_token'], ($token['expires_in'] ?? time()) - time());
         }
 
-        return $token;
+        return $token['access_token'];
     }
 
     /**

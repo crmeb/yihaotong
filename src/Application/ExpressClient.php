@@ -4,6 +4,7 @@ namespace Crmeb\Yihaotong\Application;
 
 use Crmeb\Yihaotong\Exception\YiHaoTongException;
 use Crmeb\Yihaotong\AccessToken;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * 快递相关服务
@@ -16,16 +17,16 @@ use Crmeb\Yihaotong\AccessToken;
 class ExpressClient
 {
     //电子面单模版
-    const EXPRESS_TEMP = 'v2/expr/temp';
+    const EXPRESS_TEMP = '/expr_dump/temp';
 
     //快递公司
-    const EXPRESS_LIST = 'v2/expr/express';
+    const EXPRESS_LIST = '/expr/express';
 
     //快递查询
-    const EXPRESS_QUERY = 'v2/expr/query';
+    const EXPRESS_QUERY = '/expr/query';
 
     //面单打印
-    const EXPRESS_DUMP = 'v2/expr/dump';
+    const EXPRESS_DUMP = '/expr_dump/dump';
 
     /**
      * @var AccessToken
@@ -45,7 +46,7 @@ class ExpressClient
      * 获取电子面单模版
      * @param string $com 快递公司编号
      * @return bool|mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function temp(string $com, bool $isSiid = false)
     {
@@ -58,14 +59,14 @@ class ExpressClient
             $header = ['version' => 'v1.1'];
         }
 
-        return $this->client->request(self::EXPRESS_TEMP, 'post', $param, $header);
+        return $this->client->request(self::EXPRESS_TEMP, 'get', $param, $header);
     }
 
     /**
      * 获取物流公司列表
      * @param int $type 快递类型：1，国内运输商；2，国际运输商；3，国际邮政
      * @return bool|mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function express(int $type = 0, int $page = 0, int $limit = 20)
     {
@@ -79,17 +80,15 @@ class ExpressClient
             $param = [];
         }
 
-        return $this->client->request(self::EXPRESS_LIST, 'post', $param);
+        return $this->client->request(self::EXPRESS_LIST, 'get', $param);
     }
 
     /**
      * 查询物流信息
-     * @param $com
-     * @param $num
+     * @param string $num
+     * @param string $com
      * @return bool|mixed
-     * @return 是否签收 ischeck
-     * @return 物流状态：status 0在途，1揽收，2疑难，3签收，4退签，5派件，6退回，7转单，10待清关，11清关中，12已清关，13清关异常，14收件人拒签
-     * @return 物流详情 content
+     * @throws GuzzleException
      */
     public function query(string $num, string $com = '')
     {
@@ -108,7 +107,7 @@ class ExpressClient
      * 电子面单打印
      * @param array $data 必需参数: com(快递公司编码)、to_name(寄件人)、to_tel（寄件人电话）、to_addr（寄件人详细地址）、from_name（收件人）、from_tel（收件人电话)、from_addr（收件人地址）、temp_id（电子面单模板ID）、siid（云打印机编号）、count（商品数量）
      * @return bool|mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function dump(array $data)
     {

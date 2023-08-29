@@ -68,6 +68,17 @@ class Str
     }
 
     /**
+     * 字符串转小写
+     *
+     * @param string $value
+     * @return string
+     */
+    public static function lower(string $value): string
+    {
+        return mb_strtolower($value, 'UTF-8');
+    }
+
+    /**
      * 验证手机号
      * @param string $value
      * @return false|int

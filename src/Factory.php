@@ -6,6 +6,7 @@ use Crmeb\Yihaotong\Application\AuthClient;
 use Crmeb\Yihaotong\Application\CollectClient;
 use Crmeb\Yihaotong\Application\ExpressClient;
 use Crmeb\Yihaotong\Application\InvoiceClient;
+use Crmeb\Yihaotong\Application\ShipmentClient;
 use Crmeb\Yihaotong\Application\SmsClient;
 use Crmeb\Yihaotong\Util\Str;
 
@@ -16,11 +17,12 @@ use Crmeb\Yihaotong\Util\Str;
  * @email 136327134@qq.com
  * @date 2022/10/12
  * @package Crmeb\Yihaotong
- * @method static AuthClient auth($accessToken)
- * @method static CollectClient collet($accessToken)
- * @method static ExpressClient express($accessToken)
- * @method static SmsClient sms($accessToken)
- * @method static InvoiceClient invoice($accessToken)
+ * @method static AuthClient auth()
+ * @method static CollectClient collet()
+ * @method static ExpressClient express()
+ * @method static SmsClient sms()
+ * @method static InvoiceClient invoice()
+ * @method static ShipmentClient shipment()
  */
 class Factory
 {
@@ -37,6 +39,7 @@ class Factory
 
     /**
      * @param AccessToken $accessToken
+     * @return Factory
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/7/25
@@ -78,6 +81,20 @@ class Factory
      * @date 2022/10/12
      */
     public static function __callStatic($name, $arguments)
+    {
+        return self::make($name, self::$accessToken ? [self::$accessToken] : $arguments);
+    }
+
+    /**
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/8/29
+     */
+    public function __call($name, $arguments)
     {
         return self::make($name, self::$accessToken ? [self::$accessToken] : $arguments);
     }

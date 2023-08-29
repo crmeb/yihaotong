@@ -4,6 +4,7 @@ namespace Crmeb\Yihaotong\Application;
 
 use Crmeb\Yihaotong\Exception\YiHaoTongException;
 use Crmeb\Yihaotong\AccessToken;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * 短信服务
@@ -17,15 +18,13 @@ class SmsClient
 {
 
     //发送短信
-    const SMS_SEND = 'v2/sms_v2/send';
+    const SMS_SEND = '/sms_v2/send';
     //短信模板
-    const SMS_TEMPS = 'v2/sms_v2/temps';
-    //申请模板
-    const SMS_APPLY = 'v2/sms_v2/apply';
+    const SMS_TEMPS = '/sms_v2/temps';
     //模板记录
-    const SMS_APPLYS = 'v2/sms_v2/applys';
+    const SMS_APPLYS = '/sms_v2/applys';
     //发送记录
-    const SMS_RECORD = 'v2/sms_v2/record';
+    const SMS_RECORD = '/sms_v2/record';
 
     const TEMP_TYPE_CODE = 0;//短信类型
     const TEMP_TYPE_NONET = 1;//通知类型
@@ -51,8 +50,8 @@ class SmsClient
      * @param string $tempId
      * @param array $data
      * @param string|null $host
-     * @param string|null $appid 应用id可以不填写,不填写为当前账号默认短信应用
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/13
@@ -79,7 +78,7 @@ class SmsClient
      * 发送记录
      * @param int $recordId
      * @return mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/13
@@ -94,7 +93,7 @@ class SmsClient
      * @param int $page
      * @param int $limit
      * @return mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/13
@@ -118,6 +117,7 @@ class SmsClient
      * @param int $limit
      * @param int $type
      * @return array|mixed
+     * @throws GuzzleException
      */
     public function temps(int $page = 0, int $limit = 10, int $type = 1)
     {
@@ -127,24 +127,6 @@ class SmsClient
             'temp_type' => $type
         ];
         return $this->client->request(self::SMS_TEMPS, 'post', $param);
-    }
-
-    /**
-     * 申请模版
-     * @param $title
-     * @param $content
-     * @param $type
-     * @return array|bool|mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function apply(string $title, string $content, int $type)
-    {
-        $param = [
-            'title' => $title,
-            'content' => $content,
-            'type' => $type
-        ];
-        return $this->client->request(self::SMS_APPLY, 'post', $param);
     }
 
 }

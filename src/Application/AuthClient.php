@@ -15,11 +15,7 @@ use Crmeb\Yihaotong\AccessToken;
 class AuthClient
 {
     //获取用户信息
-    const USER_INFO = 'v2/user/info';
-    //用户消费记录
-    const USER_BILL = 'v2/user/bill';
-    //用量记录
-    const USER_RECORD = 'v2/user/record';
+    const USER_INFO = '/user/info';
 
     const MEAL_TYPE = ['sms', 'query', 'dump', 'copy'];
 
@@ -74,48 +70,5 @@ class AuthClient
         }
 
         return $userInfo;
-    }
-
-
-    /**
-     * 用户消费记录
-     * @param int $page
-     * @param int $limit
-     * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @author 等风来
-     * @email 136327134@qq.com
-     * @date 2022/10/13
-     */
-    public function userBill(int $page, int $limit)
-    {
-        return $this->client->request(self::USER_BILL, 'post', ['page' => $page, 'limit' => $this->client->checkLimit($limit)]);
-    }
-
-    /**
-     * 用量记录
-     * @param int $page
-     * @param int $limit
-     * @param int $type
-     * @param string $status
-     * @return mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @author 等风来
-     * @email 136327134@qq.com
-     * @date 2022/10/13
-     */
-    public function userRecord(int $page, int $limit, int $type, string $status = '')
-    {
-        $typeContent = [1 => 'sms', 2 => 'expr_dump', 3 => 'expr_query', 4 => 'copy'];
-        if (!isset($typeContent[$type])) {
-            throw new YiHaoTongException('参数类型不正确');
-        }
-
-        $data = ['page' => $page, 'limit' => $limit, 'type' => $typeContent[$type]];
-        if ($type == 1 && $status != '') {
-            $data['status'] = $status;
-        }
-
-        return $this->client->request(self::USER_RECORD, 'post', $data);
     }
 }

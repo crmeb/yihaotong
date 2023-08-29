@@ -67,7 +67,7 @@ class BaseClient
      */
     public function baseUrl(string $uri = null)
     {
-        return $this->config['base_url'] . ($uri ? '/' . $uri : '');
+        return $this->config['base_url'] . ($uri ?: '');
     }
 
     /**

@@ -17,7 +17,7 @@ class CollectClient
     /**
      * 获取详情
      */
-    const PRODUCT_GOODS = 'v2/copy/goods';
+    const PRODUCT_GOODS = '/copy/goods';
 
     /**
      * @var AccessToken

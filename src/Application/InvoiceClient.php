@@ -7,6 +7,7 @@ use Crmeb\Yihaotong\AccessToken;
 use Crmeb\Yihaotong\Enum\InvoiceEnum;
 use Crmeb\Yihaotong\Option\InvoiceIssuanceOption;
 use Crmeb\Yihaotong\Option\InvoiceOption;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * 发票服务
@@ -53,6 +54,7 @@ class InvoiceClient
      * 获取发票开具iframe弹窗的地址
      * @param InvoiceOption $option
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29
@@ -66,6 +68,7 @@ class InvoiceClient
      * 发票开具
      * @param InvoiceIssuanceOption $option
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29
@@ -81,6 +84,7 @@ class InvoiceClient
      * @param int $page
      * @param int $limit
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29
@@ -100,6 +104,7 @@ class InvoiceClient
      * @param int $page
      * @param int $limit
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29
@@ -117,6 +122,7 @@ class InvoiceClient
      * 查看发票详情
      * @param string $invoiceNum
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29
@@ -131,6 +137,7 @@ class InvoiceClient
      * @param string $invoiceNum 发票号码
      * @param string $applyType
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29
@@ -150,6 +157,7 @@ class InvoiceClient
      * @param string $invoiceType
      * @param string $email
      * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29
@@ -173,7 +181,7 @@ class InvoiceClient
      */
     public function downloadInvoice(string $invoiceNum)
     {
-        $this->client->setPath('invoiceNum', $invoiceNum)->request(self::DOWNLOAD_INVOICE, 'get');
+        return $this->client->setPath('invoiceNum', $invoiceNum)->request(self::DOWNLOAD_INVOICE, 'get');
     }
 
 }
