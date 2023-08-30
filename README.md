@@ -24,7 +24,8 @@ use think\facade\Cache;
   
   
  $url = '采集商品的url地址';
- $res = Factory::collet($accessToken)->collet($url);
+ $factory = Factory::setAccessToken($accessToken);
+ $res = $factory->collet()->goods($url);
 
 ```
 
@@ -47,7 +48,8 @@ use Illuminate\Support\Facades\Cache;
   
   
  $url = '采集商品的url地址';
- $res = Factory::collet($accessToken)->collet($url);
+ $factory = Factory::setAccessToken($accessToken);
+ $res = $factory->collet()->goods($url);
 
 ```
 
