@@ -17,12 +17,12 @@ use Crmeb\Yihaotong\Util\Str;
  * @email 136327134@qq.com
  * @date 2022/10/12
  * @package Crmeb\Yihaotong
- * @method static AuthClient auth()
- * @method static CollectClient collet()
- * @method static ExpressClient express()
- * @method static SmsClient sms()
- * @method static InvoiceClient invoice()
- * @method static ShipmentClient shipment()
+ * @method AuthClient auth()
+ * @method CollectClient collet()
+ * @method ExpressClient express()
+ * @method SmsClient sms()
+ * @method InvoiceClient invoice()
+ * @method ShipmentClient shipment()
  */
 class Factory
 {

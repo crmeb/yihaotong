@@ -100,6 +100,7 @@ class InvoiceOption extends BaseOption
 
     /**
      * InvoiceOption constructor.
+     * @param string $unique
      * @param int $isTaxInclusive
      * @param int $isEnterprise
      * @param string $invoiceType
@@ -164,6 +165,36 @@ class InvoiceOption extends BaseOption
         }
 
         $this->goods = $goodsData;
+
+        return $this;
+    }
+
+    /**
+     * 数组转换为商品数据
+     * @param array $data
+     * @param array $keys
+     * @return $this
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/8/30
+     */
+    public function setDataToGoods(array $data, array $keys = [])
+    {
+        $goods = [];
+        foreach ($data as $item) {
+            $goodsOption = new GoodsOption();
+            foreach ($item as $k => $v) {
+                if (isset($keys[$k])) {
+                    $key = $keys[$k];
+                    $goodsOption->{$key} = $v;
+                } else {
+                    $goodsOption->{$k} = $v;
+                }
+            }
+            $goods[] = $goodsOption->toArray();
+        }
+
+        $this->goods = $goods;
 
         return $this;
     }

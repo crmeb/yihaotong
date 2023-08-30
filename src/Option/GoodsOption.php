@@ -69,7 +69,7 @@ class GoodsOption extends BaseOption
      */
     public function toArray()
     {
-        $goods = [];
+        $data = [];
 
         if (!$this->storeName) {
             throw new YiHaoTongException('商品名称为必填项');
@@ -86,9 +86,8 @@ class GoodsOption extends BaseOption
         foreach ($publicData as $key => $value) {
             $key = Str::snake($key);
             $data[$key] = $value;
-            $goods[] = $data;
         }
 
-        return $goods;
+        return $data;
     }
 }

@@ -60,9 +60,34 @@ class InvoiceIssuanceOption extends InvoiceOption
 
         unset($data['unique']);
 
-        foreach ($data['goods'] as $item) {
-
-        }
+        $this->validate([
+            'tax_id' => 'require',
+            'invoice_type' => 'require',
+            'account_name' => 'require',
+            'bank_name' => 'require',
+            'bank_account' => 'require',
+            'telephone' => 'require',
+            'company_address' => 'require',
+            'drawer' => 'require',
+            'goods.*.store_name' => 'require',
+            'goods.*.cate_id' => 'require|gt:0',
+            'goods.*.unit_price' => 'require',
+            'goods.*.num' => 'require',
+        ], [
+            'tax_id.require' => '购方纳税人号码不能为空',
+            'invoice_type.require' => '开票类型不能为空',
+            'account_name.require' => '购方企业名称不能为空',
+            'bank_name.require' => '购方开户银行名称不能为空',
+            'bank_account.require' => '购方银行账户不能为空',
+            'telephone.require' => '购方电话不能为空',
+            'company_address.require' => '购方地址不能为空',
+            'drawer.require' => '开票人不能为空',
+            'goods.*.store_name.require' => '商品名称为必填项',
+            'goods.*.cate_id.require' => '商品类目为必填项',
+            'goods.*.cate_id.gt' => '商品类目为必填项！',
+            'goods.*.unit_price.require' => '商品单价为必填项',
+            'goods.*.num.require' => '商品数量为必填项',
+        ], $data);
 
         return $data;
     }

@@ -21,8 +21,6 @@ class SmsClient
     const SMS_SEND = '/sms_v2/send';
     //短信模板
     const SMS_TEMPS = '/sms_v2/temps';
-    //模板记录
-    const SMS_APPLYS = '/sms_v2/applys';
     //发送记录
     const SMS_RECORD = '/sms_v2/record';
 
@@ -76,20 +74,9 @@ class SmsClient
 
     /**
      * 发送记录
-     * @param int $recordId
-     * @return mixed
-     * @throws GuzzleException
-     * @author 等风来
-     * @email 136327134@qq.com
-     * @date 2022/10/13
-     */
-    public function smsRecord(int $recordId)
-    {
-        return $this->client->request(self::SMS_RECORD, 'post', ['record_id' => $recordId]);
-    }
-
-    /**
-     * @param int $tempType
+     * @param string $phone
+     * @param string $status
+     * @param string $createdAt
      * @param int $page
      * @param int $limit
      * @return mixed
@@ -98,16 +85,14 @@ class SmsClient
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function smsApplys(int $tempType = self::TEMP_TYPE_CODE, int $page = 1, int $limit = 10)
+    public function smsRecord(string $phone = '', string $status = '', string $createdAt = '', int $page = 1, int $limit = 10)
     {
-        if (!in_array($tempType, [self::TEMP_TYPE_CODE, self::TEMP_TYPE_NONET, self::TEMP_TYPE_MARKETING])) {
-            throw new YiHaoTongException('类型错误');
-        }
-
-        return $this->client->request(self::SMS_APPLYS, 'post', [
-            'temp_type' => $tempType,
+        return $this->client->request(self::SMS_RECORD, 'get', [
+            'phone' => $phone,
+            'status' => $status,
+            'created_at' => $createdAt,
             'page' => $page,
-            'limit' => $this->client->checkLimit($limit),
+            'limit' => $limit
         ]);
     }
 

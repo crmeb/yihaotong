@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 define('ACCESS_KEY', 'Aiok6xUdyOmpgXNd8Syf');
 define('SECRET_KEY', 'fzAyZSjgoOgl3KYrM4zHBrKnXgc8imB9qLEC');
 
-class ShipmentClientTest extends TestCase
+class ShipmentTest extends TestCase
 {
 
     public function testcreateOrder()

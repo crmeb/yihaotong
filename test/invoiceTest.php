@@ -2,6 +2,8 @@
 
 use Crmeb\Yihaotong\AccessToken;
 use Crmeb\Yihaotong\Factory;
+use Crmeb\Yihaotong\Option\GoodsOption;
+use Crmeb\Yihaotong\Option\InvoiceIssuanceOption;
 use PHPUnit\Framework\TestCase;
 
 define('ACCESS_KEY', 'Aiok6xUdyOmpgXNd8Syf');
@@ -76,5 +78,31 @@ class invoiceTest extends TestCase
         var_dump($res);
     }
 
+
+    public function testinvoiceIssuance()
+    {
+        $this->accessToken = new AccessToken([
+            'access_key' => ACCESS_KEY,
+            'secret_key' => SECRET_KEY,
+        ]);
+
+        $this->factory = Factory::setAccessToken($this->accessToken);
+
+        $option = new InvoiceIssuanceOption();
+        $option->setDataToGoods([
+            [
+                'storeName' => '多商户',
+                'unitPrice' => '10',
+                'num' => '1',
+                'cateId' => 10
+            ]
+        ]);
+        $option->taxId = '';
+        $option->bankName = '';
+
+        $res = $this->factory->invoice()->invoiceIssuance($option);
+
+        var_dump($res);
+    }
 
 }
