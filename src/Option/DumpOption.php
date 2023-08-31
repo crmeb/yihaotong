@@ -87,6 +87,42 @@ class DumpOption extends BaseOption
     public $cargo;
 
     /**
+     * 电子面单月结账号
+     * @var string
+     */
+    public $partnerId = '';
+
+    /**
+     * 电子面单密码
+     * @var string
+     */
+    public $partnerKey = '';
+
+    /**
+     * 网点名称
+     * @var string
+     */
+    public $net = '';
+
+    /**
+     * 电子面单承载快递员名
+     * @var string
+     */
+    public $checkMan = '';
+
+    /**
+     * 电子面单客户账户名称
+     * @var string
+     */
+    public $customerName = '';
+
+    /**
+     * 电子面单承载编号
+     * @var string
+     */
+    public $code = '';
+
+    /**
      * DumpOption constructor.
      * @param string $com
      * @param string $toName

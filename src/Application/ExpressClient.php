@@ -4,6 +4,7 @@ namespace Crmeb\Yihaotong\Application;
 
 use Crmeb\Yihaotong\Exception\YiHaoTongException;
 use Crmeb\Yihaotong\AccessToken;
+use Crmeb\Yihaotong\Option\DumpOption;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
@@ -105,73 +106,74 @@ class ExpressClient
 
     /**
      * 电子面单打印
-     * @param array $data 必需参数: com(快递公司编码)、to_name(寄件人)、to_tel（寄件人电话）、to_addr（寄件人详细地址）、from_name（收件人）、from_tel（收件人电话)、from_addr（收件人地址）、temp_id（电子面单模板ID）、siid（云打印机编号）、count（商品数量）
+     * @param DumpOption $option
      * @return bool|mixed
      * @throws GuzzleException
      */
-    public function dump(array $data)
+    public function dump(DumpOption $option)
     {
-        $param = $data;
-        $param['com'] = $data['com'] ?? '';
-        if (!$param['com']) {
-            throw new YiHaoTongException('快递公司编码缺失');
-        }
 
-        $param['to_name'] = $data['to_name'] ?? '';
-        $param['to_tel'] = $data['to_tel'] ?? '';
-        $param['order_id'] = $data['order_id'] ?? '';
-        $param['to_addr'] = $data['to_addr'] ?? '';
-        if (!$param['to_addr'] || !$param['to_tel'] || !$param['to_name']) {
-            throw new YiHaoTongException('寄件人信息缺失');
-        }
+        $param = $option->toArray();
 
-        $param['from_name'] = $data['from_name'] ?? '';
-        $param['from_tel'] = $data['from_tel'] ?? '';
-        $param['from_addr'] = $data['from_addr'] ?? '';
-        if (!$param['from_name'] || !$param['from_tel'] || !$param['from_addr']) {
-            throw new YiHaoTongException('收件人信息缺失');
-        }
+        $data = [
+            'partner_id' => $option->partnerId,
+            'partner_key' => $option->partnerKey,
+            'net' => $option->net,
+            'check_man' => $option->checkMan,
+            'customer_name' => $option->customerName,
+            'code' => $option->code,
+        ];
 
-        $param['temp_id'] = $data['temp_id'] ?? '';
-        if (!$param['temp_id']) {
-            throw new YiHaoTongException('电子面单模板ID缺失');
-        }
-
-        $param['count'] = $data['count'] ?? '';
-        $param['cargo'] = $data['cargo'] ?? '';
-
-        if (!$param['count']) {
-            throw new YiHaoTongException('商品数量缺失');
-        }
+        unset($param['partner_id'],
+            $param['partner_key'],
+            $param['net'],
+            $param['check_man'],
+            $param['customer_name'],
+            $param['code']);
 
         $expressData = $this->temp($param['com']);
 
-        if (!empty($data['cargo'])) {
-            $param['cargo'] = $data['cargo'];
-        }
 
         if (1 == $expressData['partner_id']) {
-            $param['partner_id'] = $expressData['account'];
+            $param['partner_id'] = $data['partner_id'];
+            if (!$param['partner_id']) {
+                throw new YiHaoTongException('电子面单客户账户缺失');
+            }
         }
 
         if (1 == $expressData['partner_key']) {
-            $param['partner_key'] = $expressData['key'];
+            $param['partner_key'] = $data['partner_key'];
+            if (!$param['partner_key']) {
+                throw new YiHaoTongException('电子面单密码缺失');
+            }
         }
 
         if (1 == $expressData['net']) {
-            $param['net'] = $expressData['net_name'];
+            $param['net'] = $data['net'];
+            if (!$param['net']) {
+                throw new YiHaoTongException('收件网点名称必须填写');
+            }
         }
 
         if (1 == $expressData['check_man']) {
-            $param['checkMan'] = $expressData['courier_name'];
+            $param['checkMan'] = $data['check_man'];
+            if (!$param['checkMan']) {
+                throw new YiHaoTongException('电子面单承载快递员名必须填写');
+            }
         }
 
         if (1 == $expressData['partner_name']) {
-            $param['partnerName'] = $expressData['customer_name'];
+            $param['partnerName'] = $data['customer_name'];
+            if (!$param['partnerName']) {
+                throw new YiHaoTongException('电子面单客户账户名称必须填写');
+            }
         }
 
         if (1 == $expressData['is_code']) {
-            $param['code'] = $expressData['code_name'];
+            $param['code'] = $data['code'];
+            if (!$param['code']) {
+                throw new YiHaoTongException('电子面单承载编号必须填写');
+            }
         }
 
         $header = [];

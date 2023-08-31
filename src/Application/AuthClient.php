@@ -4,6 +4,8 @@ namespace Crmeb\Yihaotong\Application;
 
 use Crmeb\Yihaotong\Exception\YiHaoTongException;
 use Crmeb\Yihaotong\AccessToken;
+use GuzzleHttp\Exception\GuzzleException;
+use Psr\SimpleCache\InvalidArgumentException;
 
 /**
  * Class AuthClient
@@ -16,8 +18,6 @@ class AuthClient
 {
     //获取用户信息
     const USER_INFO = '/user/info';
-
-    const MEAL_TYPE = ['sms', 'query', 'dump', 'copy'];
 
     /**
      * @var AccessToken
@@ -41,34 +41,13 @@ class AuthClient
     /**
      * 获取用户信息
      * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function userInfo(bool $cache = true)
+    public function userInfo()
     {
-        $account = $this->client->getAccessKey();
-        $key = 'user_info_' . $account;
-
-        if ($cache) {
-            if ($this->client->getCache()->has($key)) {
-                $userInfo = $this->client->getCache()->get($key);
-            }
-        }
-
-        if (!isset($userInfo) || !$cache) {
-
-            $userInfo = $this->client->request(self::USER_INFO, 'post');
-
-            if (isset($userInfo['status']) && $userInfo['status'] == 200) {
-
-                $this->client->getCache()->set($key, $userInfo);
-
-            }
-
-        }
-
-        return $userInfo;
+        return $this->client->request(self::USER_INFO, 'post');
     }
 }
