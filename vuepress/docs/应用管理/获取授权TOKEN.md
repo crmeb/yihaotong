@@ -6,14 +6,14 @@
 
 ```
 POST v2/user/login
-Content-Type: application/json;charset=UTF-8
+Content-Type: application/x-www-form-urlencoded;charset=UTF-8
 ```
 
 ### 请求头
 
 | 名称 | 类型|是否必填 |示例值| 描述|
 |---|---|---|---|---|
-| Content-Type | 字符串|是|application/json;charset=UTF-8| 默认值：application/json;charset=UTF-8 |
+| Content-Type | 字符串|是|application/x-www-form-urlencoded;charset=UTF-8| 默认值：application/x-www-form-urlencoded;charset=UTF-8 |
 
 ### 请求参数
 

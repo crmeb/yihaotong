@@ -7,7 +7,7 @@
 | 名称 | 是否必填 | 描述|
 |---|---|---|
 | Authorization |是| 鉴权token，格式为：Bearer-{$token} ;其中的{$token}需要更换为鉴权token|
-| Content-Type | 是| 默认值：application/json;charset=UTF-8 |
+| Content-Type | 是| 默认值：application/x-www-form-urlencoded;charset=UTF-8 |
 
 ### 关于短信服务API
 
