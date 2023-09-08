@@ -133,7 +133,7 @@ class Cache implements CacheInterface
     /**
      * 删除单个
      * @param string $key
-     * @return bool|int
+     * @return int
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/13

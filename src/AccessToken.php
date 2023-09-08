@@ -4,8 +4,10 @@ namespace Crmeb\Yihaotong;
 
 use Crmeb\Yihaotong\Util\Cache;
 use Crmeb\Yihaotong\Util\Str;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\SimpleCache\CacheInterface;
 use Crmeb\Yihaotong\Exception\YiHaoTongException;
+use Psr\SimpleCache\InvalidArgumentException;
 
 /**
  * 获取token
@@ -109,8 +111,8 @@ class AccessToken extends BaseClient
     /**
      * 从缓存中获取token
      * @return mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws GuzzleException
+     * @throws InvalidArgumentException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/12
@@ -124,7 +126,7 @@ class AccessToken extends BaseClient
         } else {
             $token = $this->getToken();
 
-            $this->cache->set($key, $token['access_token'], ($token['expires_in'] ?? time()) - time());
+            $this->cache->set($key, $token['access_token'], $token['expires_in'] ?? $this->config['expires'] ?? 3600);
         }
 
         return $token['access_token'];
@@ -133,7 +135,7 @@ class AccessToken extends BaseClient
     /**
      * 删除token
      * @return bool
-     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws InvalidArgumentException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/12
@@ -163,7 +165,7 @@ class AccessToken extends BaseClient
     /**
      * 获取token
      * @return mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/12
@@ -197,7 +199,7 @@ class AccessToken extends BaseClient
      * @param array $header
      * @param bool $auth
      * @return mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/12

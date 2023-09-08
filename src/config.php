@@ -7,6 +7,8 @@ return [
 
     'base_cache_timeout' => 300,
 
+    'expires' => 3600,
+
     'redis' => [
         // 服务器地址
         'host' => '127.0.0.1',
@@ -23,6 +25,6 @@ return [
         // 数据库 0号数据库
         'select' => 0,
 
-        'timeout'=> 0
+        'timeout' => 0
     ],
 ];
