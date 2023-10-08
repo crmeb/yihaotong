@@ -73,6 +73,7 @@ module.exports = {
                         collapsable: false,
                         children: [
                             '/面单打印/API/打印电子面单',
+                            '/面单打印/API/电子面单复打',
                             '/面单打印/API/获取物流列表',
                             '/面单打印/API/获取面单模板列表',
                             '/面单打印/API/电子面单打印记录',
