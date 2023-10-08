@@ -29,6 +29,9 @@ class ExpressClient
     //面单打印
     const EXPRESS_DUMP = '/expr_dump/dump';
 
+    //电子面单复打
+    const EXPRESS_REPEAT_DUMP = '/expr_dump/repeat_dump';
+
     /**
      * @var AccessToken
      */
@@ -183,5 +186,20 @@ class ExpressClient
         }
 
         return $this->client->request(self::EXPRESS_DUMP, 'post', $param, $header);
+    }
+
+    /**
+     * 电子面单复打
+     * @param string $taskId
+     * @param string $siid
+     * @return mixed
+     * @throws GuzzleException
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/10/8
+     */
+    public function repeatDump(string $taskId, string $siid = '')
+    {
+        return $this->client->request(self::EXPRESS_REPEAT_DUMP, 'post', ['task_id' => $taskId, 'siid' => $siid]);
     }
 }
