@@ -16,12 +16,6 @@ composer require crmeb/yihaotong
 
 接口地址：http://sms.crmeb.net/api
 
-### 接口并发
-
-> 所有对外接口不允许私自对接口进行压测，如发现某账号频繁调用接口将对其账号进行封禁
-
-POST/GET 类型接口 1s / 33
-
 ### 使用说明
 
 一号通 API接口主要介绍请求语法、相关参数含义以及请求返回示例。
