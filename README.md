@@ -38,14 +38,9 @@ use Crmeb\Yihaotong\AccessToken;
 use Crmeb\Yihaotong\Factory;
 use Illuminate\Support\Facades\Cache;
 
- $accessToken = app()->make(AccessToken::class, [
-        [
-            'access_key' => '',
-            'secret_key' => '',
-        ],
-        Cache::store('redis')->getStore()
-    ]);
-  
+ $accessToken = app()->make(AccessToken::class)
+                ->setConfig('access_key','secret_key')
+                ->setCache(Cache::store('redis'));
   
  $url = '采集商品的url地址';
  $factory = Factory::setAccessToken($accessToken);

@@ -69,6 +69,20 @@ class AccessToken extends BaseClient
     }
 
     /**
+     * 设置缓存
+     * @param CacheInterface $cache
+     * @return $this
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/11/22
+     */
+    public function setCache(CacheInterface $cache)
+    {
+        $this->cache = $cache;
+        return $this;
+    }
+
+    /**
      * 设置
      * @param string $accessKey
      * @param string $secretKey

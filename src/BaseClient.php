@@ -38,6 +38,12 @@ class BaseClient
     protected $verify = false;
 
     /**
+     * base请求接口
+     * @var string
+     */
+    protected $baseUri;
+
+    /**
      * BaseClient constructor.
      */
     public function __construct()
@@ -67,7 +73,25 @@ class BaseClient
      */
     public function baseUrl(string $uri = null)
     {
-        return $this->config['base_url'] . ($uri ?: '');
+        if (!$this->baseUri) {
+            $this->baseUri = $this->config['base_url'];
+        }
+
+        return $this->baseUri . ($uri ?: '');
+    }
+
+    /**
+     * 设置基础请求uri
+     * @param string $uri
+     * @return $this
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/11/22
+     */
+    public function setBaseUri(string $uri)
+    {
+        $this->baseUri = $uri;
+        return $this;
     }
 
     /**
