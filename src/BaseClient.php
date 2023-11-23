@@ -30,7 +30,7 @@ class BaseClient
      * uri参数
      * @var array
      */
-    protected $path = [];
+    protected $parame = [];
 
     /**
      * @var bool
@@ -65,6 +65,21 @@ class BaseClient
     }
 
     /**
+     * 设置基础配置
+     * @param array $config
+     * @return $this
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/11/23
+     */
+    protected function setBaseConfig(array $config)
+    {
+        $this->config = $config;
+        return $this;
+    }
+
+    /**
+     * 获取uri
      * @param string|null $uri
      * @return string
      * @author 等风来
@@ -103,9 +118,25 @@ class BaseClient
      * @email 136327134@qq.com
      * @date 2023/8/29
      */
-    public function setPath(string $key, $value)
+    public function setParameValue(string $key, $value)
     {
-        $this->path[$key] = $value;
+        $this->parame[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * 设置path路径参数
+     * @param array $values
+     * @return $this
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/11/23
+     */
+    public function setParameValues(array $values)
+    {
+        foreach ($values as $key => $value) {
+            $this->parame[$key] = $value;
+        }
         return $this;
     }
 
@@ -119,14 +150,14 @@ class BaseClient
      */
     public function replaceUrl(string $uri)
     {
-        if (!$this->path) {
+        if (!$this->parame) {
             return $uri;
         }
 
         $var = [];
         $replace = [];
 
-        foreach ($this->path as $key => $item) {
+        foreach ($this->parame as $key => $item) {
             $var[] = '{' . $key . '}';
             $replace[] = $item;
         }

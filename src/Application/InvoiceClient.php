@@ -129,7 +129,7 @@ class InvoiceClient
      */
     public function getInvoiceInfo(string $invoiceNum)
     {
-        return $this->client->setPath('invoiceNum', $invoiceNum)->request(self::INVOICE_INFO, 'get');
+        return $this->client->setParameValue('invoiceNum', $invoiceNum)->request(self::INVOICE_INFO, 'get');
     }
 
     /**
@@ -144,7 +144,7 @@ class InvoiceClient
      */
     public function redInvoiceIssuance(string $invoiceNum, string $applyType)
     {
-        return $this->client->setPath('invoiceNum', $invoiceNum)->request(self::INVOICE_ISSUANCE_RED, 'post', [
+        return $this->client->setParameValue('invoiceNum', $invoiceNum)->request(self::INVOICE_ISSUANCE_RED, 'post', [
             'apply_type' => $applyType,
             'red_number' => '',
         ]);
@@ -181,7 +181,7 @@ class InvoiceClient
      */
     public function downloadInvoice(string $invoiceNum)
     {
-        return $this->client->setPath('invoiceNum', $invoiceNum)->request(self::DOWNLOAD_INVOICE, 'get');
+        return $this->client->setParameValue('invoiceNum', $invoiceNum)->request(self::DOWNLOAD_INVOICE, 'get');
     }
 
 }
