@@ -4,8 +4,8 @@ use Crmeb\Yihaotong\AccessToken;
 use Crmeb\Yihaotong\Factory;
 use PHPUnit\Framework\TestCase;
 
-define('ACCESS_KEY', 'yO46AXH8KZ1aZfIq6ssy');
-define('SECRET_KEY', 'l8jEe385XzvlQ2Ohr8h5Vtty0ztBXj3rOtJJ');
+define('ACCESS_KEY', '');
+define('SECRET_KEY', '');
 
 class SmsTest extends TestCase
 {
