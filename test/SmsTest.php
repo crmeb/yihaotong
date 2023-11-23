@@ -4,11 +4,22 @@ use Crmeb\Yihaotong\AccessToken;
 use Crmeb\Yihaotong\Factory;
 use PHPUnit\Framework\TestCase;
 
-define('ACCESS_KEY', 'Aiok6xUdyOmpgXNd8Syf');
-define('SECRET_KEY', 'fzAyZSjgoOgl3KYrM4zHBrKnXgc8imB9qLEC');
+define('ACCESS_KEY', 'yO46AXH8KZ1aZfIq6ssy');
+define('SECRET_KEY', 'l8jEe385XzvlQ2Ohr8h5Vtty0ztBXj3rOtJJ');
 
 class SmsTest extends TestCase
 {
+
+    public function testGetToken()
+    {
+        $this->accessToken = new AccessToken([
+            'access_key' => ACCESS_KEY,
+            'secret_key' => SECRET_KEY,
+        ]);
+
+        $token = $this->accessToken->accessToken();
+        var_dump($token);
+    }
 
     public function testsend()
     {

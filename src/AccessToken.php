@@ -135,15 +135,14 @@ class AccessToken extends BaseClient
     {
         $key = md5($this->config['base_cache_prefix'] . $this->accessKey . $this->secretKey);
         if ($this->cache->has($key)) {
-
-            $token = $this->cache->get($key);
+            $accessToken = $this->cache->get($key);
         } else {
             $token = $this->getToken();
-
+            $accessToken = $token['access_token'];
             $this->cache->set($key, $token['access_token'], $token['expires_in'] ?? $this->config['expires'] ?? 3600);
         }
 
-        return $token['access_token'];
+        return $accessToken;
     }
 
     /**
