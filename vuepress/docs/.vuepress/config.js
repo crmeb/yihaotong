@@ -38,6 +38,7 @@ module.exports = {
                         collapsable: false,
                         children: [
                             '/短信服务/API/发送短信',
+                            '/短信服务/API/批量发送短信',
                             '/短信服务/API/获取短信模板',
                             '/短信服务/API/发送记录',
                         ],
