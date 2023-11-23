@@ -80,14 +80,23 @@ class Str
 
     /**
      * 验证手机号
-     * @param string $value
+     * @param string|array $value
      * @return false|int
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public static function checkPhone(string $value)
+    public static function checkPhone($value)
     {
-        return preg_match('/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])[0-9]{8}$/', $value);
+        $pattern = '/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])[0-9]{8}$/';
+        if (is_array($value)) {
+            $res = false;
+            foreach ($value as $phone) {
+                $res = $res && preg_match($pattern, $phone);
+            }
+            return $res;
+        } else {
+            return preg_match($pattern, $value);
+        }
     }
 }

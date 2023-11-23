@@ -19,6 +19,8 @@ class SmsClient
 
     //发送短信
     const SMS_SEND = '/sms_v2/send';
+    //批量发送短信
+    const SMS_BATCH_SEND = '/sms_v2/batch_send';
     //短信模板
     const SMS_TEMPS = '/sms_v2/temps';
     //发送记录
@@ -69,6 +71,36 @@ class SmsClient
             'host' => $host ?: '',
             'temp_id' => $tempId,
             'param' => json_encode($data)
+        ]);
+    }
+
+    /**
+     * 批量发送短信
+     * @param array $phone
+     * @param string $tempId
+     * @param array $data
+     * @param string|null $host
+     * @return mixed
+     * @throws GuzzleException
+     * @author 等风来
+     * @email 136327134@qq.com
+     * @date 2023/11/23
+     */
+    public function batchSend(array $phone, string $tempId, array $data = [], string $host = null)
+    {
+        if (!$phone) {
+            throw new YiHaoTongException('发送手机号不能为空');
+        }
+
+        if (!$tempId) {
+            throw new YiHaoTongException('短信模板ID必须不能为空');
+        }
+
+        return $this->client->request(self::SMS_BATCH_SEND, 'post', [
+            'phone' => $phone,
+            'host' => $host ?: '',
+            'temp_id' => $tempId,
+            'param' => $data
         ]);
     }
 
