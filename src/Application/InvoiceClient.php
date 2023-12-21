@@ -175,6 +175,8 @@ class InvoiceClient
     /**
      * 下载发票
      * @param string $invoiceNum
+     * @return mixed
+     * @throws GuzzleException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/8/29

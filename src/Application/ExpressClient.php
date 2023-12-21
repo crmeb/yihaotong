@@ -94,7 +94,7 @@ class ExpressClient
      * @return bool|mixed
      * @throws GuzzleException
      */
-    public function query(string $num, string $com = '')
+    public function query(string $num, string $com = '', string $phone = '')
     {
         $param = [
             'com' => $com,
@@ -102,6 +102,10 @@ class ExpressClient
         ];
         if ($com === null) {
             unset($param['com']);
+        }
+
+        if ($phone) {
+            $param['phone'] = $phone;
         }
 
         return $this->client->request(self::EXPRESS_QUERY, 'post', $param);

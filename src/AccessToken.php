@@ -38,7 +38,7 @@ class AccessToken extends BaseClient
     protected $limit = 20;
 
     /**
-     * @var \Psr\SimpleCache\CacheInterface
+     * @var CacheInterface
      */
     protected $cache;
 
@@ -212,7 +212,7 @@ class AccessToken extends BaseClient
      * @param array $header
      * @param bool $auth
      * @return mixed
-     * @throws GuzzleException
+     * @throws GuzzleException|InvalidArgumentException
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2022/10/12
