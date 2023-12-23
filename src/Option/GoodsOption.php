@@ -71,9 +71,6 @@ class GoodsOption extends BaseOption
     {
         $data = [];
 
-        if (!$this->storeName) {
-            throw new YiHaoTongException('商品名称为必填项');
-        }
         if (!$this->unitPrice) {
             throw new YiHaoTongException('商品单价为必填项');
         }
