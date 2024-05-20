@@ -105,9 +105,9 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function get($key, $default = null)
+    public function get(string $key, mixed $default = null)
     {
-        $key = $this->getCacheKey($key);
+        $key   = $this->getCacheKey($key);
         $value = $this->unserialize($this->redis->get($key));
 
         return $value !== null ? $value : $default;
@@ -122,9 +122,9 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function set($key, $value, $ttl = null)
+    public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null)
     {
-        $key = $this->getCacheKey($key);
+        $key   = $this->getCacheKey($key);
         $value = $this->serialize($value);
 
         return $this->redis->set($key, $value, $ttl);
@@ -138,7 +138,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function delete($key)
+    public function delete(string $key)
     {
         return $this->redis->del($this->getCacheKey($key));
     }
@@ -164,7 +164,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function getMultiple($keys, $default = null)
+    public function getMultiple(iterable $keys, mixed $default = null)
     {
         $result = [];
 
@@ -183,7 +183,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function setMultiple($values, $ttl = null)
+    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null)
     {
         foreach ($values as $key => $val) {
             $result = $this->set($key, $val, $ttl);
@@ -203,7 +203,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function deleteMultiple($keys)
+    public function deleteMultiple(iterable $keys)
     {
         foreach ($keys as $key) {
             $result = $this->delete($key);
@@ -223,7 +223,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function has($key)
+    public function has(string $key)
     {
         return $this->redis->exists($this->getCacheKey($key));
     }
