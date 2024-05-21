@@ -105,7 +105,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function get(string $key, mixed $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         $key   = $this->getCacheKey($key);
         $value = $this->unserialize($this->redis->get($key));
@@ -122,7 +122,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null)
+    public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null): bool
     {
         $key   = $this->getCacheKey($key);
         $value = $this->serialize($value);
@@ -138,7 +138,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function delete(string $key)
+    public function delete(string $key): bool
     {
         return $this->redis->del($this->getCacheKey($key));
     }
@@ -150,7 +150,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function clear()
+    public function clear(): bool
     {
         $this->redis->flushDB();
         return true;
@@ -164,7 +164,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function getMultiple(iterable $keys, mixed $default = null)
+    public function getMultiple(iterable $keys, mixed $default = null): iterable
     {
         $result = [];
 
@@ -183,7 +183,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null)
+    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
     {
         foreach ($values as $key => $val) {
             $result = $this->set($key, $val, $ttl);
@@ -203,7 +203,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function deleteMultiple(iterable $keys)
+    public function deleteMultiple(iterable $keys): bool
     {
         foreach ($keys as $key) {
             $result = $this->delete($key);
@@ -223,7 +223,7 @@ class Cache implements CacheInterface
      * @email 136327134@qq.com
      * @date 2022/10/13
      */
-    public function has(string $key)
+    public function has(string $key): bool
     {
         return $this->redis->exists($this->getCacheKey($key));
     }
