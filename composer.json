@@ -15,7 +15,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-    	"php": ">=8.0",
+    	"php": ">=7.3",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.0|^6.0",
         "psr/simple-cache": "^2.0|^3.0"
