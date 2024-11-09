@@ -29,6 +29,20 @@ module.exports = {
                 path: '开放接口',
             },
             {
+                title: 'AI模型',
+                collapsable: false,
+                children: [
+                    '/AI模型/使用说明',
+                    {
+                        title: 'API',
+                        collapsable: false,
+                        children: [
+                            '/AI模型/API/模型对话'
+                        ],
+                    }
+                ],
+            },
+            {
                 title: '短信服务',
                 collapsable: false,
                 children: [
@@ -41,25 +55,6 @@ module.exports = {
                             '/短信服务/API/批量发送短信',
                             '/短信服务/API/获取短信模板',
                             '/短信服务/API/发送记录',
-                        ],
-                    }
-                ],
-            },
-            {
-                title: '商家寄件',
-                collapsable: false,
-                children: [
-                    '/商家寄件/使用说明',
-                    {
-                        title: 'API',
-                        collapsable: false,
-                        children: [
-                            '/商家寄件/API/创建商家寄件订单',
-                            '/商家寄件/API/查询价格',
-                            '/商家寄件/API/取消寄件',
-                            '/商家寄件/API/寄件订单列表',
-                            '/商家寄件/API/获取商家寄件快递公司',
-                            '/商家寄件/API/订单回调',
                         ],
                     }
                 ],
@@ -132,6 +127,25 @@ module.exports = {
                             '/发票开具/API/申请红字发票',
                             '/发票开具/API/开具负数发票',
                             '/发票开具/API/开票成功回调',
+                        ],
+                    }
+                ],
+            },
+            {
+                title: '商家寄件',
+                collapsable: false,
+                children: [
+                    '/商家寄件/使用说明',
+                    {
+                        title: 'API',
+                        collapsable: false,
+                        children: [
+                            '/商家寄件/API/创建商家寄件订单',
+                            '/商家寄件/API/查询价格',
+                            '/商家寄件/API/取消寄件',
+                            '/商家寄件/API/寄件订单列表',
+                            '/商家寄件/API/获取商家寄件快递公司',
+                            '/商家寄件/API/订单回调',
                         ],
                     }
                 ],
