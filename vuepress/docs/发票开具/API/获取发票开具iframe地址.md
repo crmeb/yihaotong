@@ -31,6 +31,8 @@ POST v2/invoice/invoice_issuance_url
 | company_address | 字符串|否|--| 购方地址 |
 | drawer | 字符串|否|--| 开票人 |
 | email | 字符串|否|--| 购方邮箱 |
+| show_bank_account | 数字  | 否    |--| 是否购方银行账户：1=显示，0=不显示， 默认1                                                     |
+| show_sale_account | 数字 | 否    |--| 是否显示销方银行账号：1=显示，0=不显示， 默认1                                                                  |
 
 ### <a id='goods'>goods请求参数</a>
 
