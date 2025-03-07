@@ -44,11 +44,19 @@ class BaseClient
     protected $baseUri;
 
     /**
+     * @var int
+     */
+    protected $timeout = 10;
+
+    /**
      * BaseClient constructor.
      */
-    public function __construct()
+    public function __construct(array $config = [])
     {
-        $this->client = new Client(['verify' => $this->verify, 'timeout' => 10]);
+        if (isset($config['timeout'])) {
+            $this->timeout = $config['timeout'];
+        }
+        $this->client = new Client(['verify' => $this->verify, 'timeout' => $this->timeout]);
         $this->initConfig();
     }
 
@@ -60,6 +68,16 @@ class BaseClient
     public function initConfig()
     {
         $this->config = (new Config())->toArray();
+    }
+
+    /**
+     * @param int $timeout
+     * @return $this
+     */
+    public function setTimeout(int $timeout)
+    {
+        $this->timeout = $timeout;
+        return $this;
     }
 
     /**

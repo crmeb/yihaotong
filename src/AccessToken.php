@@ -49,7 +49,7 @@ class AccessToken extends BaseClient
      */
     public function __construct(array $config = [], CacheInterface $cache = null)
     {
-        parent::__construct();
+        parent::__construct($config);
         $this->accessKey = $config['access_key'] ?? '';
         $this->secretKey = $config['secret_key'] ?? '';
         $this->limit = $config['limit'] ?? 20;
