@@ -29,6 +29,27 @@ module.exports = {
                 path: '开放接口',
             },
             {
+                title: '电子签',
+                collapsable: false,
+                children: [
+                    '/电子签/使用说明',
+                    {
+                        title: 'API',
+                        collapsable: false,
+                        children: [
+                            '/电子签/API/上传文件',
+                            '/电子签/API/获取转换任务',
+                            '/电子签/API/创建电子签订单',
+                            '/电子签/API/创建签署流程',
+                            '/电子签/API/取消签署流程',
+                            '/电子签/API/添加操作员',
+                            '/电子签/API/获取操作员角色列表',
+                            '/电子签/API/删除操作员',
+                        ],
+                    }
+                ],
+            },
+            {
                 title: 'AI模型',
                 collapsable: false,
                 children: [

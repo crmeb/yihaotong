@@ -14,7 +14,9 @@ composer require crmeb/yihaotong
 
 > 后续接口文档中不会在说明请求域名；
 
-接口地址：http://sms.crmeb.net/api
+接口地址：http://sms.crmeb.net/api 
+
+实例中的地址$HOST值为当前接口地址
 
 ### 使用说明
 
