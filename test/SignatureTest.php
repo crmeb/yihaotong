@@ -1,0 +1,44 @@
+<?php
+
+use Crmeb\Yihaotong\AccessToken;
+use Crmeb\Yihaotong\Factory;
+use PHPUnit\Framework\TestCase;
+
+define('ACCESS_KEY', 'Aiok6xUdyOmpgXNd8Syf');
+define('SECRET_KEY', '5jdJdv0MPAwaj7x7Y41C1KC11vM191uJinmq');
+
+class SignatureTest extends TestCase
+{
+    protected function signature()
+    {
+        $accessToken = (new AccessToken([
+            'access_key' => ACCESS_KEY,
+            'secret_key' => SECRET_KEY,
+        ]))->setBaseConfig((new \Crmeb\Yihaotong\Config())->setRedis([
+            'host'       => '127.0.0.1',
+            'port'       => '6379',
+            'password'   => '',
+            'expire'     => 0,
+            'prefix'     => 'test',
+            'tag_prefix' => '',
+            'select'     => 0,
+            'timeout'    => 0
+        ])->setBaseUrl('https://test-api.crmeb.com/api/v2'));
+
+        $factory = Factory::setAccessToken($accessToken);
+
+        return $factory;
+    }
+
+    public function testdescribeTemplates()
+    {
+        $result = $this->signature()->signature()->describeTemplates(1, 10);
+
+        var_dump($result);
+    }
+
+    public function testuploadFile()
+    {
+        $result = $this->signature()->signature()->uploadFile();
+    }
+}

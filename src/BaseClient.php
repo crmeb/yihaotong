@@ -82,15 +82,15 @@ class BaseClient
 
     /**
      * 设置基础配置
-     * @param array $config
+     * @param array|Config $config
      * @return $this
      * @author 等风来
      * @email 136327134@qq.com
      * @date 2023/11/23
      */
-    protected function setBaseConfig(array $config)
+    public function setBaseConfig($config)
     {
-        $this->config = $config;
+        $this->config = is_object($config) && method_exists($config, 'toArray') ? $config->toArray() : $config;
         return $this;
     }
 

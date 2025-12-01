@@ -13,25 +13,25 @@ use Psr\SimpleCache\InvalidArgumentException;
 class SignatureClient
 {
     // 获取模板列表
-    const DESCRIBE_TEMPLATES = 'v2/signature/describe_templates';
+    const DESCRIBE_TEMPLATES = '/signature/describe_templates';
     // 上传文件
-    const UPLOAD_FILE = 'v2/signature/upload_file';
+    const UPLOAD_FILE = '/signature/upload_file';
     // 转换任务
-    const CONVERT_TASK = 'v2/signature/convert_task';
+    const CONVERT_TASK = '/signature/convert_task';
     // 获取操作员列表
-    const OPERATOR_LIST = 'v2/signature/operator_list';
+    const OPERATOR_LIST = '/signature/operator_list';
     // 操作员角色
-    const  OPERATOR_ROLE = 'v2/signature/operator_role';
+    const  OPERATOR_ROLE = '/signature/operator_role';
     // 添加操作员
-    const ADD_OPERATOR = 'v2/signature/operator';
+    const ADD_OPERATOR = '/signature/operator';
     // 删除操作员
-    const DELETE_OPERATOR = 'v2/signature/delete_operator/{id}';
+    const DELETE_OPERATOR = '/signature/delete_operator/{id}';
     // 创建电子签订单
-    const  CREATE_SIGNATURE_ORDER = 'v2/signature/create_signature_order';
+    const  CREATE_SIGNATURE_ORDER = '/signature/create_signature_order';
     // 创建签署流程，返回签署地址
-    const CREATE_FLOW_BY_FILE_DIRECTLY = 'v2/signature/create_flow_by_file_directly';
+    const CREATE_FLOW_BY_FILE_DIRECTLY = '/signature/create_flow_by_file_directly';
     // 取消签署流程
-    const CANCEL_FLOW = 'v2/signature/cancel_flow';
+    const CANCEL_FLOW = '/signature/cancel_flow';
 
     /**
      * @var AccessToken

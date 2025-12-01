@@ -237,7 +237,7 @@ class Cache implements CacheInterface
      */
     protected function getCacheKey(string $key)
     {
-        return $this->config['redis']['prefix'] . $key;
+        return $this->config['prefix'] . $key;
     }
 
     /**

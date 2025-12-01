@@ -8,6 +8,7 @@ use Crmeb\Yihaotong\Application\ExpressClient;
 use Crmeb\Yihaotong\Application\InvoiceClient;
 use Crmeb\Yihaotong\Application\OpenClient;
 use Crmeb\Yihaotong\Application\ShipmentClient;
+use Crmeb\Yihaotong\Application\SignatureClient;
 use Crmeb\Yihaotong\Application\SmsClient;
 use Crmeb\Yihaotong\Util\Str;
 
@@ -24,6 +25,7 @@ use Crmeb\Yihaotong\Util\Str;
  * @method SmsClient sms()
  * @method InvoiceClient invoice()
  * @method ShipmentClient shipment()
+ * @method SignatureClient signature()
  * @method static OpenClient open()
  */
 class Factory
