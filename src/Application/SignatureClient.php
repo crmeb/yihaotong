@@ -32,6 +32,8 @@ class SignatureClient
     const CREATE_FLOW_BY_FILE_DIRECTLY = '/signature/create_flow_by_file_directly';
     // 取消签署流程
     const CANCEL_FLOW = '/signature/cancel_flow';
+    // 签署流程审核
+    const FLOW_SIGN_REVIEW = '/signature/flow_sign_review';
 
     /**
      * @var AccessToken
@@ -212,4 +214,21 @@ class SignatureClient
         ]);
     }
 
+    /**
+     * 签署流程审核
+     * @param string $signatureSn
+     * @param string $reviewType
+     * @param string $reviewMessage
+     * @return mixed
+     * @throws GuzzleException
+     * @throws InvalidArgumentException
+     */
+    public function flowSignReview(string $signatureSn, string $reviewType, string $reviewMessage)
+    {
+        return $this->client->request(self::FLOW_SIGN_REVIEW, 'post', [
+            'signature_sn'   => $signatureSn,
+            'review_type'    => $reviewType,
+            'review_message' => $reviewMessage,
+        ]);
+    }
 }

@@ -4,8 +4,8 @@ use Crmeb\Yihaotong\AccessToken;
 use Crmeb\Yihaotong\Factory;
 use PHPUnit\Framework\TestCase;
 
-define('ACCESS_KEY', 'Aiok6xUdyOmpgXNd8Syf');
-define('SECRET_KEY', '5jdJdv0MPAwaj7x7Y41C1KC11vM191uJinmq');
+define('ACCESS_KEY', '');
+define('SECRET_KEY', '');
 
 class SignatureTest extends TestCase
 {
