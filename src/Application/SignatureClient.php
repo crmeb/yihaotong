@@ -34,6 +34,10 @@ class SignatureClient
     const CANCEL_FLOW = '/signature/cancel_flow';
     // 签署流程审核
     const FLOW_SIGN_REVIEW = '/signature/flow_sign_review';
+    // 签署地址
+    const  SIGN_URL = 'v2/signature/sign_url';
+    // 获取文件下载地址
+    const DESCRIBE_FILE_URL = 'v2/signature/describe_file_url';
 
     /**
      * @var AccessToken
@@ -229,6 +233,38 @@ class SignatureClient
             'signature_sn'   => $signatureSn,
             'review_type'    => $reviewType,
             'review_message' => $reviewMessage,
+        ]);
+    }
+
+    /**
+     * 获取签署链接
+     * @param string $signatureSn
+     * @param string $userid
+     * @param string $channelType
+     * @return mixed
+     * @throws GuzzleException
+     * @throws InvalidArgumentException
+     */
+    public function getSignFlowUrl(string $signatureSn, string $userid, string $channelType)
+    {
+        return $this->client->request(self::SIGN_URL, 'post', [
+            'signature_sn' => $signatureSn,
+            'userid'       => $userid,
+            'channel_type' => $channelType,
+        ]);
+    }
+
+    /**
+     * 获取文件下载地址
+     * @param string $signatureSn
+     * @return mixed
+     * @throws GuzzleException
+     * @throws InvalidArgumentException
+     */
+    public function getDescribeFileUrl(string $signatureSn)
+    {
+        return $this->client->request(self::DESCRIBE_FILE_URL, 'get', [
+            'signature_sn' => $signatureSn,
         ]);
     }
 }
