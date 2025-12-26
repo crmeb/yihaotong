@@ -229,9 +229,14 @@ class AccessToken extends BaseClient
             throw new YiHaoTongException('手机号格式错误');
         }
 
+        if (strtolower($method) === 'get') {
+            $uri = strstr($uri, '?') !== false ? $uri . '&' . http_build_query($options) : $uri . '?' . http_build_query($options);
+            $options = [];
+        }
+
         $response = $this->client->request($method, $this->replaceUrl($this->baseUrl($uri)), [
             'headers' => $header,
-            'json' => $options,
+            'json'    => $options,
         ]);
 
         if ($response->getStatusCode() != 200) {
