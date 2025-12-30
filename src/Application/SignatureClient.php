@@ -187,18 +187,20 @@ class SignatureClient
      * @param string $fileId
      * @param string $userid
      * @param array $approvers
+     * @param bool $needSignReview
      * @return mixed
      * @throws GuzzleException
      * @throws InvalidArgumentException
      */
-    public function createFlowByFileDirectly(string $signatureSn, string $channelType, string $fileId, string $userid, array $approvers)
+    public function createFlowByFileDirectly(string $signatureSn, string $channelType, string $fileId, string $userid, array $approvers, bool $needSignReview = true)
     {
         return $this->client->request(self::CREATE_FLOW_BY_FILE_DIRECTLY, 'post', [
-            'signature_sn' => $signatureSn,
-            'channel_type' => $channelType,
-            'file_id'      => $fileId,
-            'userid'       => $userid,
-            'approvers'    => $approvers,
+            'signature_sn'     => $signatureSn,
+            'channel_type'     => $channelType,
+            'file_id'          => $fileId,
+            'userid'           => $userid,
+            'approvers'        => $approvers,
+            'need_sign_review' => $needSignReview
         ]);
     }
 
