@@ -35,9 +35,9 @@ class SignatureClient
     // 签署流程审核
     const FLOW_SIGN_REVIEW = '/signature/flow_sign_review';
     // 签署地址
-    const  SIGN_URL = 'v2/signature/sign_url';
+    const  SIGN_URL = '/signature/sign_url';
     // 获取文件下载地址
-    const DESCRIBE_FILE_URL = 'v2/signature/describe_file_url';
+    const DESCRIBE_FILE_URL = '/signature/describe_file_url';
 
     /**
      * @var AccessToken
