@@ -39,6 +39,8 @@ class SignatureClient
     // 获取文件下载地址
     const DESCRIBE_FILE_URL = '/signature/describe_file_url';
 
+    const ORDER_INFO_URL = '/signature/order_info';
+
     /**
      * @var AccessToken
      */
@@ -269,4 +271,12 @@ class SignatureClient
             'signature_sn' => $signatureSn,
         ]);
     }
+
+    public function getOrderInfo(string $signatureSn)
+    {
+        return $this->client->request(self::ORDER_INFO_URL, 'get', [
+            'signature_sn' => $signatureSn,
+        ]);
+    }
+
 }
