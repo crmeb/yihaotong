@@ -44,9 +44,12 @@ module.exports = {
                             '/电子签/API/审核电子合同',
                             '/电子签/API/取消签署流程',
                             '/电子签/API/添加操作员',
+                            '/电子签/API/删除操作员',
                             '/电子签/API/获取操作员角色列表',
+                            '/电子签/API/获取操作员列表',
                             '/电子签/API/获取文件下载地址',
                             '/电子签/API/获取签署链接',
+                            '/电子签/API/获取订单信息',
                             '/电子签/API/消息推送',
                         ],
                     }
@@ -58,10 +61,17 @@ module.exports = {
                 children: [
                     '/AI模型/使用说明',
                     {
-                        title: 'API',
+                        title: 'AI',
                         collapsable: false,
                         children: [
-                            '/AI模型/API/模型对话'
+                            '/AI模型/API/开通AI会话服务',
+                            '/AI模型/API/模型对话',
+                            '/AI模型/API/通用对话',
+                            '/AI模型/API/DeepSeek对话',
+                            '/AI模型/API/自然语言转SQL',
+                            '/AI模型/API/向量转换',
+                            '/AI模型/API/生成商品信息',
+                            '/AI模型/API/生成商品图片'
                         ],
                     }
                 ],
@@ -78,6 +88,8 @@ module.exports = {
                             '/短信服务/API/发送短信',
                             '/短信服务/API/批量发送短信',
                             '/短信服务/API/获取短信模板',
+                            '/短信服务/API/获取短信账号信息',
+                            '/短信服务/API/模板申请记录',
                             '/短信服务/API/发送记录',
                         ],
                     }
@@ -117,6 +129,22 @@ module.exports = {
                 ],
             },
             {
+                title: '条形码服务',
+                collapsable: false,
+                children: [
+                    '/条形码服务/使用说明',
+                    {
+                        title: 'API',
+                        collapsable: false,
+                        children: [
+                            '/条形码服务/API/条码查询',
+                            '/条形码服务/API/查询记录',
+                            '/条形码服务/API/服务信息'
+                        ],
+                    }
+                ],
+            },
+            {
                 title: '商品采集',
                 collapsable: false,
                 children: [
@@ -144,6 +172,10 @@ module.exports = {
                         children: [
                             '/发票开具/API/获取发票开具iframe地址',
                             '/发票开具/API/获取商品类目',
+                            '/发票开具/API/获取用户常用类目',
+                            '/发票开具/API/发票登录',
+                            '/发票开具/API/人脸识别',
+                            '/发票开具/API/人脸识别状态',
                             '/发票开具/API/发票开具',
                             '/发票开具/API/查看发票详情',
                             '/发票开具/API/下载发票',

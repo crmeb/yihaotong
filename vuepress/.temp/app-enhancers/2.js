@@ -1,1 +1,2 @@
-export { default } from "D:\\WWW\\sms-admin-composer-git\\yihaotong-github\\vuepress\\node_modules\\vuepress-plugin-smooth-scroll\\lib\\enhanceApp.js"
+import "/Users/a854404313/Desktop/www/yihaotong/api_yihaotong/vuepress/node_modules/@vuepress/plugin-nprogress/enhanceAppFile.js"
+export default {}

@@ -8,6 +8,14 @@ $badgeTipColor = #42b983
 $badgeWarningColor = darken(#ffe564, 35%)
 $badgeErrorColor = #DA5961
 
+// 导航栏半透明毛玻璃,与首页浅蓝渐变背景融合
+.navbar{
+    background-color: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+}
+
+
 #app .theme-container .page table thead tr{
     background-color: #f2f2f2;
 }
@@ -37,15 +45,15 @@ $badgeErrorColor = #DA5961
 
 @media screen and (min-width: 1400px) {
   #app .theme-container .page .theme-default-content {
-    width: 1200px !important;
-    max-width:none;
+    width: 860px !important;
+    max-width: none;
   }
   #app .theme-container .page .page-edit{
-      width: 1200px !important;
+      width: 860px !important;
          max-width:none;
     }
   #app .theme-container .page .page-nav{
-      width: 1200px !important;
+      width: 860px !important;
          max-width:none;
     }
 
@@ -56,3 +64,53 @@ $badgeErrorColor = #DA5961
     scrollbar-gutter: stable;
     width: 6px;
 }
+
+// 代码块复制按钮
+#app div[class*="language-"]{
+    position: relative;
+}
+#app .copy-code-btn{
+    position: absolute;
+    top: 0.8em;
+    right: 1em;
+    z-index: 5;
+    padding: 2px 10px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#app .copy-code-btn:hover{
+    background: rgba(255,255,255,0.28);
+}
+
+// 代码组 tabs 激活下划线用主题蓝
+#app .theme-code-group__nav-tab-active{
+    border-bottom-color: #409eff;
+}
+
+// 内页整体版心 1376px 左右居中,小于 960px 不启用(移动端走主题默认布局)
+@media screen and (min-width: 960px) {
+    body:not(.yht-home-page) .theme-container{
+        max-width: 1376px;
+        margin: 0 auto;
+    }
+    // 侧边栏保持 fixed(改为 sticky 会参与布局,把内容区整体压到一屏之下),
+    // 用动态 left 让它贴住 1376px 版心的左缘,与 margin auto 的版心对齐
+    body:not(.yht-home-page) .sidebar{
+        left: unquote('max(0px, calc(50% - 688px))');
+    }
+    // 导航栏内容与版心对齐(stylus 会把 max() 当内置函数求值,这里用 unquote 原样输出 CSS)
+    .navbar{
+        padding-left: unquote('max(1.5rem, calc(50% - 688px))');
+        padding-right: unquote('max(1.5rem, calc(50% - 688px))');
+    }
+    .navbar .links{
+        right: unquote('max(1.5rem, calc(50% - 688px))');
+    }
+}
+
+

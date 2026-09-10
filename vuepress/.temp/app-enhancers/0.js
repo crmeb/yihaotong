@@ -1,2 +1,1 @@
-import "D:\\WWW\\sms-admin-composer-git\\yihaotong-github\\vuepress\\node_modules\\@vuepress\\core\\lib\\node\\internal-plugins\\style\\client.js"
-export default {}
+export { default } from "/Users/a854404313/Desktop/www/yihaotong/api_yihaotong/vuepress/docs/.vuepress/enhanceApp.js"

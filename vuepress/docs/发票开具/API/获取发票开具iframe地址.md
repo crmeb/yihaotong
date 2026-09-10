@@ -79,4 +79,171 @@ POST v2/invoice/invoice_issuance_url
 
 ![img.png](../../public/copy_setting/iframe.png)
 
+### 请求示例
 
+<code-group>
+<code-block title="PHP" active>
+
+```php
+<?php
+
+$token = 'your access_token';
+
+$ch = curl_init();
+
+curl_setopt_array($ch, [
+    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'Authorization: Bearer-' . $token,
+        'Content-Type: application/json',
+    ],
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => json_encode([
+        'unique' => 'xxx',
+        'goods' => [
+            [
+                'store_name' => 'xxx',
+                'unit_price' => 'xxx',
+                'nature_type' => 'xxx',
+                'num' => 'xxx',
+                'sku' => 'xxx',
+                'unit' => 'xxx',
+                'tax_rate' => 'xxx',
+                'amount' => 'xxx',
+                'tax_price' => 'xxx',
+                'cate_id' => 'xxx',
+                'cate_name' => 'xxx',
+            ],
+        ],
+        'is_enterprise' => 1,
+        'tax_id' => 'xxx',
+        'invoice_type' => 'xxx',
+        'invoice_tspz_type' => 'xxx',
+        'account_name' => '13800138000',
+        'bank_name' => 'xxx',
+        'bank_account' => '13800138000',
+        'telephone' => '13800138000',
+        'company_address' => 'xxx',
+        'drawer' => 'xxx',
+        'email' => 'xxx',
+        'remark' => 'xxx',
+        'show_bank_account' => 1,
+        'show_sale_account' => 1,
+    ]),
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump(json_decode($response, true));
+```
+
+</code-block>
+<code-block title="Java">
+
+```java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+String token = "your access_token";
+
+HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create("http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url"))
+        .header("Authorization", "Bearer-" + token)
+        .header("Content-Type", "application/json")
+        .POST(HttpRequest.BodyPublishers.ofString("{\"unique\":\"xxx\",\"goods\":[{\"store_name\":\"xxx\",\"unit_price\":\"xxx\",\"nature_type\":\"xxx\",\"num\":\"xxx\",\"sku\":\"xxx\",\"unit\":\"xxx\",\"tax_rate\":\"xxx\",\"amount\":\"xxx\",\"tax_price\":\"xxx\",\"cate_id\":\"xxx\",\"cate_name\":\"xxx\"}],\"is_enterprise\":1,\"tax_id\":\"xxx\",\"invoice_type\":\"xxx\",\"invoice_tspz_type\":\"xxx\",\"account_name\":\"13800138000\",\"bank_name\":\"xxx\",\"bank_account\":\"13800138000\",\"telephone\":\"13800138000\",\"company_address\":\"xxx\",\"drawer\":\"xxx\",\"email\":\"xxx\",\"remark\":\"xxx\",\"show_bank_account\":1,\"show_sale_account\":1}"))
+        .build();
+
+HttpResponse<String> response = HttpClient.newHttpClient()
+        .send(request, HttpResponse.BodyHandlers.ofString());
+System.out.println(response.body());
+```
+
+</code-block>
+<code-block title="Node">
+
+```javascript
+const token = 'your access_token';
+
+(async () => {
+    const response = await fetch('http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer-' + token,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'unique': "xxx",
+            'goods': [
+                {
+                    'store_name': "xxx",
+                    'unit_price': "xxx",
+                    'nature_type': "xxx",
+                    'num': "xxx",
+                    'sku': "xxx",
+                    'unit': "xxx",
+                    'tax_rate': "xxx",
+                    'amount': "xxx",
+                    'tax_price': "xxx",
+                    'cate_id': "xxx",
+                    'cate_name': "xxx",
+                },
+            ],
+            'is_enterprise': 1,
+            'tax_id': "xxx",
+            'invoice_type': "xxx",
+            'invoice_tspz_type': "xxx",
+            'account_name': "13800138000",
+            'bank_name': "xxx",
+            'bank_account': "13800138000",
+            'telephone': "13800138000",
+            'company_address': "xxx",
+            'drawer': "xxx",
+            'email': "xxx",
+            'remark': "xxx",
+            'show_bank_account': 1,
+            'show_sale_account': 1,
+        })
+    });
+
+    const data = await response.json();
+    console.log(data);
+})();
+```
+
+</code-block>
+<code-block title="Go">
+
+```go
+package main
+
+import (
+	"fmt"
+	"io"
+	"net/http"
+	"strings"
+)
+
+func main() {
+	token := "your access_token"
+
+	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url", strings.NewReader(`{"unique":"xxx","goods":[{"store_name":"xxx","unit_price":"xxx","nature_type":"xxx","num":"xxx","sku":"xxx","unit":"xxx","tax_rate":"xxx","amount":"xxx","tax_price":"xxx","cate_id":"xxx","cate_name":"xxx"}],"is_enterprise":1,"tax_id":"xxx","invoice_type":"xxx","invoice_tspz_type":"xxx","account_name":"13800138000","bank_name":"xxx","bank_account":"13800138000","telephone":"13800138000","company_address":"xxx","drawer":"xxx","email":"xxx","remark":"xxx","show_bank_account":1,"show_sale_account":1}`))
+	req.Header.Set("Authorization", "Bearer-"+token)
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	result, _ := io.ReadAll(resp.Body)
+	fmt.Println(string(result))
+}
+```
+
+</code-block>
+</code-group>

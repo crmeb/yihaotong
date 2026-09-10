@@ -7,7 +7,7 @@
 | 名称 | 是否必填 | 描述                                                   |
 |---|---|------------------------------------------------------|
 | Authorization |是| 鉴权token，格式为：Bearer-{$token} ;其中的{$token}需要更换为鉴权token |
-| Content-Type | 是| 默认值：multipart/form-data; 或者: application/json        |
+| Content-Type | 是| application/json                                       |
 
 ### API列表
 
@@ -27,6 +27,9 @@
 | 面单打印服务 | `v2/expr/record`                            | <a href='/docs/面单打印/API/电子面单打印记录.html'>电子面单打印记录</a>                               |
 | 物流查询   | `v2/expr/query`                             | <a href='/docs/物流查询/API/查询物流.html'>查询物流接口</a>                                     |
 | 物流查询   | `v2/expr/record`                            | <a href='/docs/物流查询/API/物流接口查询记录接口.html'>物流接口查询记录接口</a>                           |
+| 条形码服务 | `v2/barcode/query`                          | <a href='/docs/条形码服务/API/条码查询.html'>条码查询接口</a>                                     |
+| 条形码服务 | `v2/barcode/record`                         | <a href='/docs/条形码服务/API/查询记录.html'>条码查询记录接口</a>                                   |
+| 条形码服务 | `v2/barcode/info`                           | <a href='/docs/条形码服务/API/服务信息.html'>条码服务信息接口</a>                                   |
 | 商品采集   | `v2/copy/goods`                             | <a href='/docs/商品采集/API/采集商品接口.html'>采集商品接口</a>                                   |
 | 商品采集   | `v2/copy/record`                            | <a href='/docs/商品采集/API/查询记录.html'>采集商品记录接口</a>                               |
 | 发票开具   | `v2/invoice/invoice_issuance_url`           | <a href='/docs/发票开具/API/获取发票开具iframe地址.html'>获取发票开具页面iframe地址</a>                          |
@@ -43,6 +46,21 @@
 | 电子签    | `v2/signature/create_signature_order`       | <a href='/docs/电子签/API/创建电子签订单.html'>创建电子签订单</a>                                  |
 | 电子签    | `v2/signature/create_flow_by_file_directly` | <a href='/docs/电子签/API/创建签署流程.html'>创建签署流程，返回签署地址</a>                             |
 | 电子签    | `/v2/signature/cancel_flow`                 | <a href='/docs/电子签/API/取消签署流程.html'>取消签署流程</a>                                    |
+| 电子签    | `v2/signature/order_info`                   | <a href='/docs/电子签/API/获取订单信息.html'>获取订单信息</a>                                    |
+| AI模型   | `v2/chat/open`                              | <a href='/docs/AI模型/API/开通AI会话服务.html'>开通AI会话服务</a>                                   |
+| AI模型   | `v2/chat/conversation`                      | <a href='/docs/AI模型/API/模型对话.html'>AI模型对话</a>                                        |
+| AI模型   | `v2/chat/chat`                              | <a href='/docs/AI模型/API/通用对话.html'>通用对话</a>                                        |
+| AI模型   | `v2/chat/deepseek`                          | <a href='/docs/AI模型/API/DeepSeek对话.html'>DeepSeek对话</a>                                  |
+| AI模型   | `v2/chat/nl_to_sql`                         | <a href='/docs/AI模型/API/自然语言转SQL.html'>自然语言转SQL</a>                                   |
+| AI模型   | `v2/chat/embeddings`                        | <a href='/docs/AI模型/API/向量转换.html'>向量转换</a>                                        |
+| AI模型   | `v2/chat/generate_goods_info`               | <a href='/docs/AI模型/API/生成商品信息.html'>生成商品信息</a>                                     |
+| AI模型   | `v2/chat/generate_goods_image`              | <a href='/docs/AI模型/API/生成商品图片.html'>生成商品图片</a>                                     |
+| 短信服务   | `v2/sms_v2/info`                            | <a href='/docs/短信服务/API/获取短信账号信息.html'>获取短信账号信息</a>                                 |
+| 短信服务   | `v2/sms_v2/applys`                          | <a href='/docs/短信服务/API/模板申请记录.html'>模板申请记录</a>                                     |
+| 发票开具   | `v2/invoice/category_user`                  | <a href='/docs/发票开具/API/获取用户常用类目.html'>获取用户常用类目</a>                                 |
+| 发票开具   | `v2/invoice/invoice_login`                  | <a href='/docs/发票开具/API/发票登录.html'>发票登录</a>                                        |
+| 发票开具   | `v2/invoice/face_recognition`               | <a href='/docs/发票开具/API/人脸识别.html'>人脸识别</a>                                        |
+| 发票开具   | `v2/invoice/face_recognition_status`        | <a href='/docs/发票开具/API/人脸识别状态.html'>人脸识别状态</a>                                     |
 
 
 
