@@ -1,1 +1,1 @@
-{"version":1,"defects":{"SmsTest::testGetToken":5},"times":{"SmsTest::testGetToken":0.024}}
+{"version":1,"defects":{"SmsTest::testGetToken":5,"SignatureTest::testdescribeTemplates":5,"SignatureTest::testgetSignFlowUrl":5},"times":{"SmsTest::testGetToken":0.024,"SignatureTest::testdescribeTemplates":2.751,"SignatureTest::testgetSignFlowUrl":0.3}}

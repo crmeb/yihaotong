@@ -4,8 +4,8 @@ use Crmeb\Yihaotong\AccessToken;
 use Crmeb\Yihaotong\Factory;
 use PHPUnit\Framework\TestCase;
 
-define('ACCESS_KEY', '');
-define('SECRET_KEY', '');
+define('ACCESS_KEY', 'IGQzNOzeSAr6Sx7tgw6C');
+define('SECRET_KEY', 'EpCyUAvPfQwe1vC7eerFZxg8NcxxuLMKYcyE');
 
 class SignatureTest extends TestCase
 {
@@ -32,7 +32,7 @@ class SignatureTest extends TestCase
 
     public function testdescribeTemplates()
     {
-        $result = $this->signature()->signature()->describeTemplates(1, 10);
+        $result = $this->signature()->signature()->getOperatorList(1, 10);
 
         var_dump($result);
     }
@@ -40,5 +40,11 @@ class SignatureTest extends TestCase
     public function testuploadFile()
     {
         $result = $this->signature()->signature()->uploadFile();
+    }
+
+    public function testgetSignFlowUrl()
+    {
+        $result= $this->signature()->signature()->getSignFlowUrl('111', '222','WEIXINAPP');
+        var_dump($result);
     }
 }
