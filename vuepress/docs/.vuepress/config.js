@@ -60,6 +60,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/AI模型/使用说明',
+                    '/AI模型/AI接口配置',
                     {
                         title: 'AI',
                         collapsable: false,
