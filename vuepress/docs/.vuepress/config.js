@@ -67,6 +67,7 @@ module.exports = {
                         children: [
                             '/AI模型/API/开通AI会话服务',
                             '/AI模型/API/模型对话',
+                            '/AI模型/API/创建或获取API Key',
                             '/AI模型/API/通用对话',
                             '/AI模型/API/DeepSeek对话',
                             '/AI模型/API/自然语言转SQL',

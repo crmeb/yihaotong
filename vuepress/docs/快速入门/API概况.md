@@ -49,6 +49,7 @@
 | 电子签    | `v2/signature/order_info`                   | <a href='/docs/电子签/API/获取订单信息.html'>获取订单信息</a>                                    |
 | AI模型   | `v2/chat/open`                              | <a href='/docs/AI模型/API/开通AI会话服务.html'>开通AI会话服务</a>                                   |
 | AI模型   | `v2/chat/conversation`                      | <a href='/docs/AI模型/API/模型对话.html'>AI模型对话</a>                                        |
+| AI模型   | `v2/chat/apikey`                            | <a href='/docs/AI模型/API/创建或获取API Key.html'>创建或获取API Key</a>                           |
 | AI模型   | `v2/chat/chat`                              | <a href='/docs/AI模型/API/通用对话.html'>通用对话</a>                                        |
 | AI模型   | `v2/chat/deepseek`                          | <a href='/docs/AI模型/API/DeepSeek对话.html'>DeepSeek对话</a>                                  |
 | AI模型   | `v2/chat/nl_to_sql`                         | <a href='/docs/AI模型/API/自然语言转SQL.html'>自然语言转SQL</a>                                   |
