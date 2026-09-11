@@ -3,6 +3,7 @@
 namespace Crmeb\Yihaotong;
 
 use Crmeb\Yihaotong\Application\AuthClient;
+use Crmeb\Yihaotong\Application\AiClient;
 use Crmeb\Yihaotong\Application\BarcodeClient;
 use Crmeb\Yihaotong\Application\CollectClient;
 use Crmeb\Yihaotong\Application\ExpressClient;
@@ -21,6 +22,7 @@ use Crmeb\Yihaotong\Util\Str;
  * @date 2022/10/12
  * @package Crmeb\Yihaotong
  * @method AuthClient auth()
+ * @method AiClient ai()
  * @method BarcodeClient barcode()
  * @method CollectClient collet()
  * @method ExpressClient express()

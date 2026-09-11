@@ -11,6 +11,9 @@ class AiClient
 {
 
     const AI_CONVERSATION = '/chat/conversation';
+
+    // 创建/获取API Key
+    const AI_API_KEY = '/chat/apikey';
     /**
      * @var AccessToken
      */
@@ -38,6 +41,21 @@ class AiClient
             'message'           => $message,
             'stream'            => $stream ? 1 : 0,
             'assistant_message' => $assistantMessage
+        ]);
+    }
+
+    /**
+     * 创建或获取API Key
+     * 已有API Key时后端直接复用创建时间最早的一把(reused=true),不再重复创建
+     * @param string $name Key名称,可空
+     * @param int $days 有效期天数,0=永久有效;最大3650天
+     * @return mixed data: {id, key, group, reused}
+     */
+    public function createApiKey(string $name = '', int $days = 0)
+    {
+        return $this->client->request(self::AI_API_KEY, 'post', [
+            'name' => $name,
+            'days' => $days,
         ]);
     }
 }
