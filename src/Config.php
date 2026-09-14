@@ -12,7 +12,7 @@ class Config
      * 请求地址
      * @var string
      */
-    protected $baseUrl = 'https://sms.crmeb.net/api/v2';
+    protected $baseUrl = 'https://api.crmeb.net/api/v2';
 
     /**
      *
