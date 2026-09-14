@@ -183,6 +183,72 @@ claude "你好，请介绍一下你自己"
 
 ---
 
+## 接口对接说明
+
+AI 网关采用 **OpenAI 兼容协议**，标准 REST 接口，任何支持自定义接口地址的工具或代码均可直接对接。
+
+### 接口信息
+
+| 项目 | 值 |
+|---|---|
+| 接口地址 | `https://api.crmeb.net/v1` |
+| 鉴权方式 | `Authorization: Bearer {API Key}` |
+| 协议格式 | OpenAI 兼容（/v1/chat/completions） |
+| 模型名称 | 以实际开通的服务为准 |
+
+### 获取API Key
+
+API Key 以 `sk-` 开头，获取方式二选一：
+
+1. 调用[创建或获取API Key](/docs/AI模型/API/创建或获取API%20Key.html)接口获取（已有Key时自动复用）
+2. 登录一号通工作台，在 AI 模型管理中查看
+
+### 对话请求示例
+
+```bash
+curl https://api.crmeb.net/v1/chat/completions \
+  -H "Authorization: Bearer sk-xxxxxxxx" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "your-model-name",
+    "messages": [
+      {"role": "user", "content": "你好"}
+    ],
+    "stream": false
+  }'
+```
+
+### 响应说明
+
+非流式返回结构与 OpenAI 一致：
+
+```json
+{
+  "id": "chatcmpl-xxx",
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "message": { "role": "assistant", "content": "回复内容" },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": { "prompt_tokens": 10, "completion_tokens": 20, "total_tokens": 30 }
+}
+```
+
+请求体中 `"stream": true` 时以 SSE 流式返回，逐段输出 `data: {...}`，以 `data: [DONE]` 结束
+
+### 与AI工具的关系
+
+上文 Codex、ZCode、Claude Code 配置中填写的接口地址与密钥，即本网关的地址与 API Key：
+
+- Codex / ZCode：OpenAI 兼容协议，接口地址填 `https://api.crmeb.net/v1`
+- Claude Code：走 Anthropic 协议，网关已自动适配，无需额外转换
+- 各工具消耗的 tokens 均按 AI 会话服务的套餐余量计费
+
+---
+
 ::: warning 注意
 - 各工具的接口地址统一为 `https://api.crmeb.net/v1`，密钥与模型名称以你实际开通的服务为准
 - 环境变量配置仅在当前终端会话生效，如需永久生效请写入 `~/.bashrc` 或 `~/.zshrc`

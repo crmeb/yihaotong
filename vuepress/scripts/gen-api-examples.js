@@ -17,7 +17,7 @@ const LANGS = ['PHP', 'Java', 'Node', 'Go']
 // 常见参数名 → 更有意义的占位值
 const NAME_HINTS = [
   [/phone|mobile/i, '13800138000'],
-  [/(url|link)$/i, 'https://www.example.com'],
+  [/(url|link)$/i, 'https://api.crmeb.net'],
   [/time|date$/i, '2026-01-01 12:00:00'],
   [/^param$/, '{"code":"1234"}'],
   [/sign/i, '一号通'],
