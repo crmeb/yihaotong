@@ -100,8 +100,19 @@ $badgeErrorColor = #DA5961
     }
     // 侧边栏保持 fixed(改为 sticky 会参与布局,把内容区整体压到一屏之下),
     // 用动态 left 让它贴住 1376px 版心的左缘,与 margin auto 的版心对齐
+    // 注意:不能用 max(0px, ...) —— 打包压缩会把 0px 优化成 0,
+    // max() 中长度与无单位 0 混合属于非法值,整条声明会被浏览器丢弃(仅打包后复现)
     body:not(.yht-home-page) .sidebar{
-        left: unquote('max(0px, calc(50% - 688px))');
+        left: unquote('calc(50% - 688px)');
+    }
+    // 版心左缘为负时(视口宽度不足以容纳 1376px)回落为 0
+    body:not(.yht-home-page) .sidebar{
+        left: 0;
+    }
+    @media screen and (min-width: 1376px) {
+        body:not(.yht-home-page) .sidebar{
+            left: unquote('calc(50% - 688px)');
+        }
     }
     // 导航栏内容与版心对齐(stylus 会把 max() 当内置函数求值,这里用 unquote 原样输出 CSS)
     .navbar{

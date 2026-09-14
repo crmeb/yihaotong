@@ -92,7 +92,7 @@ $token = 'your access_token';
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url',
+    CURLOPT_URL => 'http://api.crmeb.net/api/v2/invoice/invoice_issuance_url',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Authorization: Bearer-' . $token,
@@ -151,7 +151,7 @@ import java.net.http.HttpResponse;
 String token = "your access_token";
 
 HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url"))
+        .uri(URI.create("http://api.crmeb.net/api/v2/invoice/invoice_issuance_url"))
         .header("Authorization", "Bearer-" + token)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString("{\"unique\":\"xxx\",\"goods\":[{\"store_name\":\"xxx\",\"unit_price\":\"xxx\",\"nature_type\":\"xxx\",\"num\":\"xxx\",\"sku\":\"xxx\",\"unit\":\"xxx\",\"tax_rate\":\"xxx\",\"amount\":\"xxx\",\"tax_price\":\"xxx\",\"cate_id\":\"xxx\",\"cate_name\":\"xxx\"}],\"is_enterprise\":1,\"tax_id\":\"xxx\",\"invoice_type\":\"xxx\",\"invoice_tspz_type\":\"xxx\",\"account_name\":\"13800138000\",\"bank_name\":\"xxx\",\"bank_account\":\"13800138000\",\"telephone\":\"13800138000\",\"company_address\":\"xxx\",\"drawer\":\"xxx\",\"email\":\"xxx\",\"remark\":\"xxx\",\"show_bank_account\":1,\"show_sale_account\":1}"))
@@ -169,7 +169,7 @@ System.out.println(response.body());
 const token = 'your access_token';
 
 (async () => {
-    const response = await fetch('http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url', {
+    const response = await fetch('http://api.crmeb.net/api/v2/invoice/invoice_issuance_url', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer-' + token,
@@ -230,7 +230,7 @@ import (
 func main() {
 	token := "your access_token"
 
-	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/invoice/invoice_issuance_url", strings.NewReader(`{"unique":"xxx","goods":[{"store_name":"xxx","unit_price":"xxx","nature_type":"xxx","num":"xxx","sku":"xxx","unit":"xxx","tax_rate":"xxx","amount":"xxx","tax_price":"xxx","cate_id":"xxx","cate_name":"xxx"}],"is_enterprise":1,"tax_id":"xxx","invoice_type":"xxx","invoice_tspz_type":"xxx","account_name":"13800138000","bank_name":"xxx","bank_account":"13800138000","telephone":"13800138000","company_address":"xxx","drawer":"xxx","email":"xxx","remark":"xxx","show_bank_account":1,"show_sale_account":1}`))
+	req, _ := http.NewRequest("POST", "http://api.crmeb.net/api/v2/invoice/invoice_issuance_url", strings.NewReader(`{"unique":"xxx","goods":[{"store_name":"xxx","unit_price":"xxx","nature_type":"xxx","num":"xxx","sku":"xxx","unit":"xxx","tax_rate":"xxx","amount":"xxx","tax_price":"xxx","cate_id":"xxx","cate_name":"xxx"}],"is_enterprise":1,"tax_id":"xxx","invoice_type":"xxx","invoice_tspz_type":"xxx","account_name":"13800138000","bank_name":"xxx","bank_account":"13800138000","telephone":"13800138000","company_address":"xxx","drawer":"xxx","email":"xxx","remark":"xxx","show_bank_account":1,"show_sale_account":1}`))
 	req.Header.Set("Authorization", "Bearer-"+token)
 	req.Header.Set("Content-Type", "application/json")
 

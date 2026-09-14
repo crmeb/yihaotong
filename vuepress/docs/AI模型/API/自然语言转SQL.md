@@ -2,6 +2,7 @@
 
 调用自然语言转SQL接口，将用户问题与数据表结构描述转换为可直接执行的MySQL查询SQL；系统会自动附加约束提示词，仅生成SELECT查询，非聚合SQL使用分页占位符
 
+
 ### 请求语法
 
 ```
@@ -55,7 +56,7 @@ $token = 'your access_token';
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/chat/nl_to_sql',
+    CURLOPT_URL => 'http://api.crmeb.net/api/v2/chat/nl_to_sql',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Authorization: Bearer-' . $token,
@@ -86,7 +87,7 @@ import java.net.http.HttpResponse;
 String token = "your access_token";
 
 HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://sms.crmeb.net/api/v2/chat/nl_to_sql"))
+        .uri(URI.create("http://api.crmeb.net/api/v2/chat/nl_to_sql"))
         .header("Authorization", "Bearer-" + token)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString("{\"messages\":[],\"max_tokens\":2048}"))
@@ -104,7 +105,7 @@ System.out.println(response.body());
 const token = 'your access_token';
 
 (async () => {
-    const response = await fetch('http://sms.crmeb.net/api/v2/chat/nl_to_sql', {
+    const response = await fetch('http://api.crmeb.net/api/v2/chat/nl_to_sql', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer-' + token,
@@ -137,7 +138,7 @@ import (
 func main() {
 	token := "your access_token"
 
-	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/chat/nl_to_sql", strings.NewReader(`{"messages":[],"max_tokens":2048}`))
+	req, _ := http.NewRequest("POST", "http://api.crmeb.net/api/v2/chat/nl_to_sql", strings.NewReader(`{"messages":[],"max_tokens":2048}`))
 	req.Header.Set("Authorization", "Bearer-"+token)
 	req.Header.Set("Content-Type", "application/json")
 

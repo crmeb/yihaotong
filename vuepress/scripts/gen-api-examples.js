@@ -10,7 +10,7 @@ const fs = require('fs')
 const path = require('path')
 
 const DOCS_DIR = path.resolve(__dirname, '../docs')
-const BASE_URL = 'http://sms.crmeb.net/api'
+const BASE_URL = 'http://api.crmeb.net/api'
 const SKIP_FILES = ['消息推送.md', '订单回调.md', '开票成功回调.md']
 const LANGS = ['PHP', 'Java', 'Node', 'Go']
 

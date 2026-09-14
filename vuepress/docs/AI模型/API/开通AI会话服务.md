@@ -2,6 +2,7 @@
 
 调用开通AI会话服务接口为当前用户开通AI会话服务，开通后才能调用对话、向量转换等会话类接口
 
+
 ### 请求语法
 
 ```
@@ -41,7 +42,7 @@ $token = 'your access_token';
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/chat/open',
+    CURLOPT_URL => 'http://api.crmeb.net/api/v2/chat/open',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Authorization: Bearer-' . $token,
@@ -73,7 +74,7 @@ import java.net.http.HttpResponse;
 String token = "your access_token";
 
 HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://sms.crmeb.net/api/v2/chat/open"))
+        .uri(URI.create("http://api.crmeb.net/api/v2/chat/open"))
         .header("Authorization", "Bearer-" + token)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString("{\"data\":[],\"status\":1,\"msg\":\"请求文字描述；已开通时返回「服务已开通，请勿重复操作！」\"}"))
@@ -91,7 +92,7 @@ System.out.println(response.body());
 const token = 'your access_token';
 
 (async () => {
-    const response = await fetch('http://sms.crmeb.net/api/v2/chat/open', {
+    const response = await fetch('http://api.crmeb.net/api/v2/chat/open', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer-' + token,
@@ -125,7 +126,7 @@ import (
 func main() {
 	token := "your access_token"
 
-	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/chat/open", strings.NewReader(`{"data":[],"status":1,"msg":"请求文字描述；已开通时返回「服务已开通，请勿重复操作！」"}`))
+	req, _ := http.NewRequest("POST", "http://api.crmeb.net/api/v2/chat/open", strings.NewReader(`{"data":[],"status":1,"msg":"请求文字描述；已开通时返回「服务已开通，请勿重复操作！」"}`))
 	req.Header.Set("Authorization", "Bearer-"+token)
 	req.Header.Set("Content-Type", "application/json")
 

@@ -44,7 +44,7 @@ $token = 'your access_token';
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/invoice/send_pdf_email',
+    CURLOPT_URL => 'http://api.crmeb.net/api/v2/invoice/send_pdf_email',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Authorization: Bearer-' . $token,
@@ -77,7 +77,7 @@ import java.net.http.HttpResponse;
 String token = "your access_token";
 
 HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://sms.crmeb.net/api/v2/invoice/send_pdf_email"))
+        .uri(URI.create("http://api.crmeb.net/api/v2/invoice/send_pdf_email"))
         .header("Authorization", "Bearer-" + token)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString("{\"tax_id\":\"xxx\",\"invoice_num\":\"xxx\",\"invoice_type\":\"xxx\",\"email\":\"xxx\"}"))
@@ -95,7 +95,7 @@ System.out.println(response.body());
 const token = 'your access_token';
 
 (async () => {
-    const response = await fetch('http://sms.crmeb.net/api/v2/invoice/send_pdf_email', {
+    const response = await fetch('http://api.crmeb.net/api/v2/invoice/send_pdf_email', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer-' + token,
@@ -130,7 +130,7 @@ import (
 func main() {
 	token := "your access_token"
 
-	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/invoice/send_pdf_email", strings.NewReader(`{"tax_id":"xxx","invoice_num":"xxx","invoice_type":"xxx","email":"xxx"}`))
+	req, _ := http.NewRequest("POST", "http://api.crmeb.net/api/v2/invoice/send_pdf_email", strings.NewReader(`{"tax_id":"xxx","invoice_num":"xxx","invoice_type":"xxx","email":"xxx"}`))
 	req.Header.Set("Authorization", "Bearer-"+token)
 	req.Header.Set("Content-Type", "application/json")
 

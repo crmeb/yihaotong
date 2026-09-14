@@ -49,7 +49,7 @@ $token = 'your access_token';
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/user/login',
+    CURLOPT_URL => 'http://api.crmeb.net/api/v2/user/login',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Authorization: Bearer-' . $token,
@@ -80,7 +80,7 @@ import java.net.http.HttpResponse;
 String token = "your access_token";
 
 HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://sms.crmeb.net/api/v2/user/login"))
+        .uri(URI.create("http://api.crmeb.net/api/v2/user/login"))
         .header("Authorization", "Bearer-" + token)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString("{\"access_key\":\"BZKoP4UxZW55FkhXwvQp\",\"secret_key\":\"oJX0a0ZquyohszxGeaUqwqQX16a4vRz3AonA\"}"))
@@ -98,7 +98,7 @@ System.out.println(response.body());
 const token = 'your access_token';
 
 (async () => {
-    const response = await fetch('http://sms.crmeb.net/api/v2/user/login', {
+    const response = await fetch('http://api.crmeb.net/api/v2/user/login', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer-' + token,
@@ -131,7 +131,7 @@ import (
 func main() {
 	token := "your access_token"
 
-	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/user/login", strings.NewReader(`{"access_key":"BZKoP4UxZW55FkhXwvQp","secret_key":"oJX0a0ZquyohszxGeaUqwqQX16a4vRz3AonA"}`))
+	req, _ := http.NewRequest("POST", "http://api.crmeb.net/api/v2/user/login", strings.NewReader(`{"access_key":"BZKoP4UxZW55FkhXwvQp","secret_key":"oJX0a0ZquyohszxGeaUqwqQX16a4vRz3AonA"}`))
 	req.Header.Set("Authorization", "Bearer-"+token)
 	req.Header.Set("Content-Type", "application/json")
 

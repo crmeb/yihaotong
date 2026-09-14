@@ -2,6 +2,7 @@
 
 调用DeepSeek对话接口进行深度推理对话，兼容OpenAI消息格式，支持流式（SSE）与非流式返回；按实际消耗的tokens扣除套餐余量
 
+
 ### 请求语法
 
 ```
@@ -53,7 +54,7 @@ $token = 'your access_token';
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/chat/deepseek',
+    CURLOPT_URL => 'http://api.crmeb.net/api/v2/chat/deepseek',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Authorization: Bearer-' . $token,
@@ -95,7 +96,7 @@ import java.net.http.HttpResponse;
 String token = "your access_token";
 
 HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://sms.crmeb.net/api/v2/chat/deepseek"))
+        .uri(URI.create("http://api.crmeb.net/api/v2/chat/deepseek"))
         .header("Authorization", "Bearer-" + token)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString("{\"messages\":[{\"role\":\"user\",\"content\":\"你好\"}],\"max_tokens\":2048,\"temperature\":0.2,\"frequency_penalty\":0,\"stream\":false,\"response_format\":{\"type\":\"json_object\"}}"))
@@ -113,7 +114,7 @@ System.out.println(response.body());
 const token = 'your access_token';
 
 (async () => {
-    const response = await fetch('http://sms.crmeb.net/api/v2/chat/deepseek', {
+    const response = await fetch('http://api.crmeb.net/api/v2/chat/deepseek', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer-' + token,
@@ -157,7 +158,7 @@ import (
 func main() {
 	token := "your access_token"
 
-	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/chat/deepseek", strings.NewReader(`{"messages":[{"role":"user","content":"你好"}],"max_tokens":2048,"temperature":0.2,"frequency_penalty":0,"stream":false,"response_format":{"type":"json_object"}}`))
+	req, _ := http.NewRequest("POST", "http://api.crmeb.net/api/v2/chat/deepseek", strings.NewReader(`{"messages":[{"role":"user","content":"你好"}],"max_tokens":2048,"temperature":0.2,"frequency_penalty":0,"stream":false,"response_format":{"type":"json_object"}}`))
 	req.Header.Set("Authorization", "Bearer-"+token)
 	req.Header.Set("Content-Type", "application/json")
 

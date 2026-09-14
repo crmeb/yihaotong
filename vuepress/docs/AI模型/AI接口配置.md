@@ -85,7 +85,7 @@ Codex 通过环境变量指定接口地址、密钥与模型。在终端执行�
 
 ```bash
 export OPENAI_API_KEY=your_api_key
-export OPENAI_BASE_URL=https://ai.crmeb.com/v1
+export OPENAI_BASE_URL=https://api.crmeb.net/v1
 export OPENAI_MODEL=your-model-name
 ```
 
@@ -123,7 +123,7 @@ ZCode 使用配置文件指定接口，配置文件位于 `~/.zcode/config.json`
 ```json
 {
   "provider": "custom",
-  "baseUrl": "https://ai.crmeb.com/v1",
+  "baseUrl": "https://api.crmeb.net/v1",
   "apiKey": "your_api_key",
   "model": "your-model-name"
 }
@@ -161,7 +161,7 @@ npm install -g @anthropic-ai/claude-code
 Claude Code 通过环境变量指定接口地址、密钥与模型。在终端执行：
 
 ```bash
-export ANTHROPIC_BASE_URL=https://ai.crmeb.com/v1
+export ANTHROPIC_BASE_URL=https://api.crmeb.net/v1
 export ANTHROPIC_AUTH_TOKEN=your_api_key
 export ANTHROPIC_MODEL=your-model-name
 ```
@@ -184,7 +184,7 @@ claude "你好，请介绍一下你自己"
 ---
 
 ::: warning 注意
-- 各工具的接口地址统一为 `https://ai.crmeb.com/v1`，密钥与模型名称以你实际开通的服务为准
+- 各工具的接口地址统一为 `https://api.crmeb.net/v1`，密钥与模型名称以你实际开通的服务为准
 - 环境变量配置仅在当前终端会话生效，如需永久生效请写入 `~/.bashrc` 或 `~/.zshrc`
 - 更换接口配置后需要重启工具进程才能生效
 :::

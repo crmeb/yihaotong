@@ -2,6 +2,7 @@
 
 调用创建或获取API Key接口获取AI接口的鉴权Key，用于在Codex、ZCode、Claude Code等AI工具中配置接口密钥；已有API Key时后端直接复用创建时间最早的一把，不会重复创建
 
+
 ### 请求语法
 
 ```
@@ -38,7 +39,7 @@ POST v2/chat/apikey
 | group | 字符串|默认分组| 所属分组名称 |
 | reused | 布尔|false| 是否复用已有Key；true=返回已存在的Key；false=本次新建 |
 
-> 获取到的 key 配合接口地址 `https://ai.crmeb.com/v1` 使用，配置方式请查看[AI接口配置](/docs/AI模型/AI接口配置.html)
+> 获取到的 key 配合接口地址 `https://api.crmeb.net/v1` 使用，配置方式请查看[AI接口配置](/docs/AI模型/AI接口配置.html)
 
 ### 请求示例
 
@@ -53,7 +54,7 @@ $token = 'your access_token';
 $ch = curl_init();
 
 curl_setopt_array($ch, [
-    CURLOPT_URL => 'http://sms.crmeb.net/api/v2/chat/apikey',
+    CURLOPT_URL => 'http://api.crmeb.net/api/v2/chat/apikey',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Authorization: Bearer-' . $token,
@@ -84,7 +85,7 @@ import java.net.http.HttpResponse;
 String token = "your access_token";
 
 HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("http://sms.crmeb.net/api/v2/chat/apikey"))
+        .uri(URI.create("http://api.crmeb.net/api/v2/chat/apikey"))
         .header("Authorization", "Bearer-" + token)
         .header("Content-Type", "application/json")
         .POST(HttpRequest.BodyPublishers.ofString("{\"name\":\"我的AI应用\",\"days\":30}"))
@@ -102,7 +103,7 @@ System.out.println(response.body());
 const token = 'your access_token';
 
 (async () => {
-    const response = await fetch('http://sms.crmeb.net/api/v2/chat/apikey', {
+    const response = await fetch('http://api.crmeb.net/api/v2/chat/apikey', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer-' + token,
@@ -135,7 +136,7 @@ import (
 func main() {
 	token := "your access_token"
 
-	req, _ := http.NewRequest("POST", "http://sms.crmeb.net/api/v2/chat/apikey", strings.NewReader(`{"name":"我的AI应用","days":30}`))
+	req, _ := http.NewRequest("POST", "http://api.crmeb.net/api/v2/chat/apikey", strings.NewReader(`{"name":"我的AI应用","days":30}`))
 	req.Header.Set("Authorization", "Bearer-"+token)
 	req.Header.Set("Content-Type", "application/json")
 
